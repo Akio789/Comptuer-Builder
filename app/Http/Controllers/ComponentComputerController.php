@@ -10,6 +10,19 @@ use App\Models\ComponentComputer;
 
 class ComponentComputerController extends Controller
 {
+
+    /**
+     * Get all the components that the computer
+     * doesn't currently have
+     */
+    function getAvailableComponents($computer)
+    {
+        $componentIdsToExcept = array_map(function ($component) {
+            return $component->id;
+        }, $computer->components->all());
+        return Component::all()->except($componentIdsToExcept);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,9 +32,11 @@ class ComponentComputerController extends Controller
     {
         $computer = Computer::find($id);
         $components = $computer->components;
+        $availableComponents = $this->getAvailableComponents($computer);
         return view('computer.components.index', [
             'computer' => $computer,
-            'components' => $components
+            'components' => $components,
+            'availableComponents' => $availableComponents
         ]);
     }
 
@@ -33,10 +48,7 @@ class ComponentComputerController extends Controller
     public function create($id)
     {
         $computer = Computer::find($id);
-        $componentIdsToExcept = array_map(function ($component) {
-            return $component->id;
-        }, $computer->components->all());
-        $availableComponents = Component::all()->except($componentIdsToExcept);
+        $availableComponents = $this->getAvailableComponents($computer);
         return view('computer.components.create', [
             'computer' => $computer,
             'availableComponents' => $availableComponents
@@ -89,9 +101,15 @@ class ComponentComputerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $computerId, $componentId)
     {
-        //
+        $arr = $request->input();
+        $componentComputer = ComponentComputer::where('computer_id', $computerId)
+            ->where('component_id', $componentId)->first();
+        $componentComputer->component_id = (int)$arr['component'];
+        $componentComputer->save();
+
+        return redirect()->route('computers.index');
     }
 
     /**
