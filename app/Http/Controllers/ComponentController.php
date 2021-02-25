@@ -58,7 +58,9 @@ class ComponentController extends Controller
      */
     public function show($id)
     {
-        //
+        $component = Component::find($id);
+
+        return view('components.info', ['component' => $component]);
     }
 
     /**
@@ -69,7 +71,8 @@ class ComponentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $component = Component::find($id);
+        return view('components.edit', ['component' => $component]);
     }
 
     /**
@@ -81,7 +84,15 @@ class ComponentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $component = Component::find($id);
+        $arr = $request->input();
+        $component->name = $arr['name'];
+        $component->brand = $arr['brand'];
+        $component->model = $arr['model'];
+        $component->price = $arr['price'];
+        $component->save();
+
+        return redirect()->route('components.index');
     }
 
     /**
