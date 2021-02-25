@@ -14,11 +14,12 @@
 <p>
     <a href="{{ route('computers.create') }}">Create a computer</a>
 </p>
-<table>
+<table border="1px solid black">
     <thead>
         <tr>
             <th>#</th>
             <th>Name</th>
+            <td>Components</td>
             <th>Options</th>
         </tr>
     </thead>
@@ -28,13 +29,24 @@
             <td>{{ $item->id }}</td>
             <td>{{ $item->name }}</td>
             <td>
+                @foreach ($item->components as $component)
+                <p>{{ $component->name }}</p>
+                @endforeach
+                <a href="{{ route('computer.components.index', ['computer' => $item->id]) }}">See all</a>
+            </td>
+            <td>
                 <a href="{{ route('computers.edit', ['computer' => $item->id]) }}"">Edit</a>
                 <form action="{{ route('computers.destroy', ['computer' => $item->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button>Delete</button>
                 </form>
-                <a href="{{ route('computers.show', ['computer' => $item->id]) }}">Info</a>
+                <p>
+                    <a href="{{ route('computers.show', ['computer' => $item->id]) }}">Info</a>
+                </p>
+                <p>
+                    <a href="{{ route('computer.components.create', ['computer' => $item->id]) }}">Add components</a>
+                </p>
             </td>
         </tr>
         @endforeach

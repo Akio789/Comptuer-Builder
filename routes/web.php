@@ -6,6 +6,7 @@ use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\ComponentComputerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,4 @@ Route::post('/login', [AuthenticationController::class, 'login']);
 Route::resource('computers', ComputerController::class);
 Route::resource('users', UserController::class);
 Route::resource('components', ComponentController::class);
+Route::resource('computer.components', ComponentComputerController::class);

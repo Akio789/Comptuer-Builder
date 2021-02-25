@@ -14,6 +14,7 @@ class CreateComponentComputer extends Migration
     public function up()
     {
         Schema::create('component_computer', function (Blueprint $table) {
+            $table->timestamps();
             $table->foreignId('computer_id')->constrained()->onDelete('cascade');
             $table->foreignId('component_id')->constrained()->onDelete('cascade');
         });
