@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ComputerController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AuthenticationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,10 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/logout', [AuthenticationController::class, 'logout']);
+Route::get('/login', [AuthenticationController::class, 'loginForm']);
+Route::post('/login', [AuthenticationController::class, 'login']);
 
 Route::resource('computers', ComputerController::class);
 Route::resource('users', UserController::class);

@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+<a href="/logout">Logout</a>
 <h1>Hello {{ Auth::user()->name }}</h1>
 <h2>List of computers</h2>
 <p>
