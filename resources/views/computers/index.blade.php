@@ -31,6 +31,11 @@
             <td>
                 @foreach ($item->components as $component)
                 <p>{{ $component->name }}</p>
+                <form action="{{ route('computer.components.destroy', ['computer' => $item->id, 'component' => $component->id]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button>Remove</button>
+                </form>
                 @endforeach
                 <a href="{{ route('computer.components.index', ['computer' => $item->id]) }}">See all</a>
             </td>

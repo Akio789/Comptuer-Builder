@@ -100,8 +100,11 @@ class ComponentComputerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($computerId, $componentId)
     {
-        //
+        $componentComputer = ComponentComputer::where('computer_id', $computerId)
+            ->where('component_id', $componentId);
+        $componentComputer->delete();
+        return redirect()->route('computers.index', ['computer' => $computerId]);
     }
 }
