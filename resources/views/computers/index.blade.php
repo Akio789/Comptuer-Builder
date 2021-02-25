@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-<h1>List of computers</h1>
+<h1>Hello {{ Auth::user()->name }}</h1>
+<h2>List of computers</h2>
 <p>
     <a href="{{ route('computers.create') }}">Create a computer</a>
 </p>
