@@ -103,6 +103,8 @@ class ComponentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $component = Component::find($id);
+        $component->delete();
+        return redirect()->route('components.index');
     }
 }
