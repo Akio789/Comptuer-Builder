@@ -43,6 +43,7 @@ class ComputerController extends Controller
         $computer->user_id = 1;
         $computer->name = $arr['name'];
         $computer->save();
+
         return redirect()->route('computers.index');
     }
 
@@ -54,7 +55,9 @@ class ComputerController extends Controller
      */
     public function show($id)
     {
-        return 'hello from show';
+        $computer = Computer::find($id);
+
+        return view('computers.info', ['computer' => $computer]);
     }
 
     /**
@@ -65,7 +68,9 @@ class ComputerController extends Controller
      */
     public function edit($id)
     {
-        return 'hello from edit';
+        $computer = Computer::find($id);
+
+        return view('computers.edit', ['computer' => $computer]);
     }
 
     /**
@@ -77,7 +82,12 @@ class ComputerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $arr = $request->input();
+        $computer = Computer::find($id);
+        $computer->name = $arr['name'];
+        $computer->save();
+
+        return redirect()->route('computers.index');
     }
 
     /**
@@ -88,6 +98,9 @@ class ComputerController extends Controller
      */
     public function destroy($id)
     {
-        return 'hello from destroy';
+        $computer = Computer::find($id);
+        $computer->delete();
+
+        return redirect()->route('computers.index');
     }
 }

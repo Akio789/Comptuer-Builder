@@ -2,7 +2,7 @@
 @extends('layouts.main')
 
 @section('content')
-<h1>Create your coin here</h1>
+<h1>Create your computer here</h1>
 <form action="{{ route('computers.store') }}" method="POST">
     @csrf
     <div>
