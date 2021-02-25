@@ -59,7 +59,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = Auth::user();
+        $user = User::find($id);
         return view('users.info', ['user' => $user]);
     }
 
@@ -71,7 +71,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::find($id);
+        return view('users.edit', ['user' => $user]);
     }
 
     /**
@@ -83,7 +84,13 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $arr = $request->input();
+        $user->name = $arr['name'];
+        $user->email = $arr['email'];
+        $user->password = Hash::make($arr['password']);
+        $user->save();
+        return redirect()->route('users.show', ['user' => $user]);
     }
 
     /**

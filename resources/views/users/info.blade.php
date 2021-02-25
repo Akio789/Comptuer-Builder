@@ -9,4 +9,5 @@
     @method('DELETE')
     <button>Delete account</button>
 </form>
+<a href="{{ route('users.edit', ['user' => $user->id]) }}"">Edit</a>
 @endsection
