@@ -59,7 +59,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = Auth::user();
+        return view('users.info', ['user' => $user]);
     }
 
     /**
@@ -93,6 +94,14 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        // Needed because the admin might also be able to delete users
+        $userHimselfIsDeleting = $id == Auth::user()->id;
+        $user->delete();
+        if ($userHimselfIsDeleting) {
+            return redirect('/logout');
+        }
+
+        return redirect()->route('computers.index');
     }
 }
