@@ -41,7 +41,6 @@ class UserController extends Controller
     {
         $arr = $request->input();
         $user = new User();
-        // TODO: take user_id from session
         $user->name = $arr['name'];
         $user->email = $arr['email'];
         $user->password = Hash::make($arr['password']);

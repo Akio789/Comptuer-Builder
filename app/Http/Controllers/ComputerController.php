@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Computer;
 
@@ -15,7 +16,7 @@ class ComputerController extends Controller
      */
     public function index()
     {
-        $computers = Computer::all();
+        $computers = Computer::where('user_id', Auth::user()->id)->get();
         return view('computers.index', ['computers' => $computers]);
     }
 
@@ -39,8 +40,7 @@ class ComputerController extends Controller
     {
         $arr = $request->input();
         $computer = new Computer();
-        // TODO: take user_id from session
-        $computer->user_id = 1;
+        $computer->user_id = Auth::user()->id;
         $computer->name = $arr['name'];
         $computer->save();
 
