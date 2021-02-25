@@ -5,7 +5,7 @@
 <a href="/logout">Logout</a>
 <a href="{{ route('users.show', ['user' => Auth::user()->id]) }}">Profile</a>
 <!-- HASTA AQUI -->
-<!-- ESTA OPCION PROBABLEMENTE SOLO SE MOSTRARA A LOS ADMINS -->
+<!-- ESTAS OPCIONES PROBABLEMENTE SOLO SE MOSTRARA A LOS ADMINS -->
 <a href="{{ route('users.index') }}">List of users (In the future it will only be shown to admins)</a>
 <!-- HASTA AQUI -->
 <h1>Hello {{ Auth::user()->name }}</h1>
@@ -18,6 +18,7 @@
         <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Options</th>
         </tr>
     </thead>
     <tbody>

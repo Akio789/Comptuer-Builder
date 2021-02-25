@@ -16,7 +16,7 @@ class ComputerController extends Controller
      */
     public function index()
     {
-        $computers = Computer::where('user_id', Auth::user()->id)->get();
+        $computers = Auth::user()->computers;
         return view('computers.index', ['computers' => $computers]);
     }
 
