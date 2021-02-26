@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+<a href="{{ route('computers.index') }}">Back to your computer list</a>
 <h1>Hello {{ Auth::user()->name }}</h1>
 <h2>List of components</h2>
 <p>
