@@ -2,13 +2,24 @@
 
 @section('content')
 <!-- ESTO DEBE IR EN EL HEADER -->
-<a href="/logout">Logout</a>
-<a href="{{ route('users.show', ['user' => Auth::user()->id]) }}">Profile</a>
+<div style="display: flex">
+    <div style= "background-color:#aeb6b0; border:1px solid black;  width: fit-content ;padding: 0px 5px 0px 5px">
+        <a style="color: inherit" href="/logout">Logout</a>
+    </div>
+    <div style= "background-color:#aeb6b0; border:1px solid black;  width: fit-content;padding: 0px 5px 0px 5px ">
+    <a style="color: inherit" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">Profile</a>
+    </div>
+    <div style= "background-color:#aeb6b0; border:1px solid black;  width: fit-content;padding: 0px 5px 0px 5px ">
+    <a style="color: inherit" href="{{ route('users.index') }}">List of users (In the future it will only be shown to admins)</a>
+    </div>
+    <div style= "background-color:#aeb6b0; border:1px solid black;  width: fit-content;padding: 0px 5px 0px 5px ">
+    <a style="color: inherit" href="{{ route('components.index') }}">List of Components (In the future it will only be shown to admins)</a>
+    </div>
+</div>
+
+
 <!-- HASTA AQUI -->
-<!-- ESTAS OPCIONES PROBABLEMENTE SOLO SE MOSTRARAN A LOS ADMINS -->
-<a href="{{ route('users.index') }}">List of users (In the future it will only be shown to admins)</a>
-<a href="{{ route('components.index') }}">List of Components (In the future it will only be shown to admins)</a>
-<!-- HASTA AQUI -->
+
 <h1>Hello {{ Auth::user()->name }}</h1>
 <h2>List of computers</h2>
 <p>
