@@ -2,9 +2,6 @@
 @extends('layouts.main')
 
 @section('content')
-@if (session('failed'))
-  <p>Incorrect credentials</p>
-@endif
 <h1>Login</h1>
 <form action="/login" method="POST">
     @csrf

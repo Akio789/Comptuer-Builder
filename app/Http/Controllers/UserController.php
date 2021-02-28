@@ -126,7 +126,7 @@ class UserController extends Controller
         $user->delete();
 
         if ($userHimselfIsDeleting) {
-            return redirect('/logout');
+            return redirect()->route('auth.logout');
         }
 
         return redirect()->route('computers.index');
