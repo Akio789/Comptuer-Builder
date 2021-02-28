@@ -19,6 +19,10 @@
         <input name="password" id="password" type="password">
     </div>
     <div>
+        <label for="password">Confirm password</label>
+        <input name="password_confirmation" id="password" type="password">
+    </div>
+    <div>
         <input type="submit" value="Edit">
     </div>
 </form>
