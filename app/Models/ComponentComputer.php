@@ -7,7 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class ComponentComputer extends Model
 {
+    use HasFactory;
+
     protected $table = 'component_computer';
 
-    use HasFactory;
+    protected $fillable = [
+        'component_id',
+        'computer_id'
+    ];
 }
