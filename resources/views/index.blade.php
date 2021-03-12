@@ -46,9 +46,6 @@
 				</form>
 			</div>
 			<div class="card-footer">
-                @if (session('failed'))
-                    <p>Incorrect credentials</p>
-                @endif
 				<div class="d-flex justify-content-center links">
 					Don't have an account?<a href="{{ route('users.create') }}">Sign Up</a>
 				</div>

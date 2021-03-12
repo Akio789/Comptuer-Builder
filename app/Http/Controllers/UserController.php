@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 use App\Models\User;
 
@@ -39,13 +41,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $arr = $request->input();
-        $user = new User();
-        $user->name = $arr['name'];
-        $user->email = $arr['email'];
-        $user->password = Hash::make($arr['password']);
-        $user->save();
+        $data = $request->input();
 
+        Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email:rfc,dns|unique:users',
+            'password' => 'required|confirmed'
+        ])->validate();
+
+        $data['password'] = Hash::make($data['password']);
+
+        $user = User::create($data);
         Auth::login($user);
 
         return redirect()->route('computers.index');
@@ -85,11 +91,23 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         $user = User::find($id);
-        $arr = $request->input();
-        $user->name = $arr['name'];
-        $user->email = $arr['email'];
-        $user->password = Hash::make($arr['password']);
+
+        Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => [
+                'required',
+                Rule::unique('users')->ignore($user->id)
+            ],
+            'password' => 'required|confirmed'
+        ])->validate();
+
+        $data = $request->input();
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
         $user->save();
+
         return redirect()->route('users.show', ['user' => $user]);
     }
 
@@ -102,11 +120,13 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
+
         // Needed because the admin might also be able to delete users
         $userHimselfIsDeleting = $id == Auth::user()->id;
         $user->delete();
+
         if ($userHimselfIsDeleting) {
-            return redirect('/logout');
+            return redirect()->route('auth.logout');
         }
 
         return redirect()->route('computers.index');

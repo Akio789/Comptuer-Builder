@@ -10,11 +10,13 @@ class AuthenticationController extends Controller
     /**
      * Logout current authenticated user.
      */
-    public function logout()
+    public function logout(Request $request)
     {
         Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect()->route('index');
     }
 
     /**
@@ -22,7 +24,7 @@ class AuthenticationController extends Controller
      */
     public function loginForm(Request $request)
     {
-        return view('login');
+        return view('index');
     }
 
     /**
@@ -30,13 +32,11 @@ class AuthenticationController extends Controller
      */
     public function login(Request $request)
     {
-        $arr = $request->input();
-        $email = $arr['email'];
-        $password = $arr['password'];
-        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
             return redirect()->route('computers.index');
-        } else {
-            return redirect('/login')->with('failed', true);
         }
+
+        return redirect()->back()->withErrors(['Incorrect credentials']);
     }
 }
