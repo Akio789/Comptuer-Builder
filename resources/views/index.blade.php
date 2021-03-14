@@ -47,7 +47,7 @@
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="{{ route('users.create') }}">Sign Up</a>
+					Don't have an account?<a href="{{ route('auth.registerForm') }}">Sign Up</a>
 				</div>
 			</div>
 		</div>

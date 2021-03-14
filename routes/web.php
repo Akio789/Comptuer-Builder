@@ -25,8 +25,14 @@ Route::get('/', function () {
 
 Route::any('/logout', [AuthenticationController::class, 'logout'])->name('auth.logout');
 Route::post('/login', [AuthenticationController::class, 'login'])->name('auth.login');
+Route::get('/register', [AuthenticationController::class, 'registerForm'])->name('auth.registerForm');
+Route::post('/register', [AuthenticationController::class, 'register'])->name('auth.register');
 
-Route::resource('computers', ComputerController::class);
-Route::resource('users', UserController::class);
-Route::resource('components', ComponentController::class);
-Route::resource('computer.components', ComponentComputerController::class);
+Route::resource('computers', ComputerController::class)
+    ->middleware('auth');
+Route::resource('users', UserController::class)
+    ->middleware('auth');
+Route::resource('components', ComponentController::class)
+    ->middleware('auth');
+Route::resource('computer.components', ComponentComputerController::class)
+    ->middleware('auth');

@@ -25,7 +25,7 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form action="{{ route('users.store') }}" method="POST">
+				<form action="{{ route('auth.register') }}" method="POST">
                 @csrf
                     <div class="input-group form-group">
 						<div class="input-group-prepend">

@@ -41,20 +41,7 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->input();
-
-        Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required|email:rfc,dns|unique:users',
-            'password' => 'required|confirmed'
-        ])->validate();
-
-        $data['password'] = Hash::make($data['password']);
-
-        $user = User::create($data);
-        Auth::login($user);
-
-        return redirect()->route('computers.index');
+        //
     }
 
     /**
