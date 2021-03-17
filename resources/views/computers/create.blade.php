@@ -17,7 +17,7 @@
 </head>
 <body>
 <div class="container">
-	<div class="d-flex justify-content-center h-100">
+	<div class="d-flex justify-content-center">
 		<div class="card">
 			<div class="card-header">
 				<h3>Create new computer</h3>
@@ -29,7 +29,7 @@
                 @csrf
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-user"></i></span>
+							<span class="input-group-text"><i class="fas fa-desktop"></i></span>
 						</div>
 						<input name="name" id="name" type="text" class="form-control" placeholder="name">
 					</div>

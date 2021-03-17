@@ -1,7 +1,8 @@
 @extends('layouts.main')
 
 @section('content')
-<h1>Detail of {{ $computer->name }}</h1>
+<div class="title-banner"><h2 >Details of "{{ $computer->name }}" </h2></div>
+
 <p>Id: {{ $computer->id }}</p>
 <p>Name: {{ $computer->name }}</p>
 

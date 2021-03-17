@@ -12,8 +12,8 @@
 </head>
 <body>
 <div class="container">
-<div><img src="{{URL::asset('/images/logo-white.svg')}}" class="login-logo" ></div>
-	<div class="d-flex justify-content-center h-100">
+<div><img src="{{URL::asset('/images/test.svg')}}" class="login-logo" ></div>
+	<div class="d-flex justify-content-center">
 		<div class="card">
 			<div class="card-header">
 				<h3>Create new account</h3>
