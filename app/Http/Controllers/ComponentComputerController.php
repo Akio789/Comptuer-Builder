@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Computer;
 use App\Models\Component;
 use App\Models\ComponentComputer;
+use Illuminate\Support\Facades\Validator;
 
 class ComponentComputerController extends Controller
 {
@@ -20,6 +21,7 @@ class ComponentComputerController extends Controller
         $componentIdsToExcept = array_map(function ($component) {
             return $component->id;
         }, $computer->components->all());
+
         return Component::all()->except($componentIdsToExcept);
     }
 
@@ -33,6 +35,7 @@ class ComponentComputerController extends Controller
         $computer = Computer::find($id);
         $components = $computer->components;
         $availableComponents = $this->getAvailableComponents($computer);
+
         return view('computer.components.index', [
             'computer' => $computer,
             'components' => $components,
@@ -49,6 +52,7 @@ class ComponentComputerController extends Controller
     {
         $computer = Computer::find($id);
         $availableComponents = $this->getAvailableComponents($computer);
+
         return view('computer.components.create', [
             'computer' => $computer,
             'availableComponents' => $availableComponents
@@ -63,35 +67,17 @@ class ComponentComputerController extends Controller
      */
     public function store(Request $request, $id)
     {
-        $arr = $request->input();
-        $componentComputer = new ComponentComputer();
-        $componentComputer->component_id = $arr['component'];
-        $componentComputer->computer_id = $id;
-        $componentComputer->save();
+        Validator::make($request->all(), [
+            'component' => 'required',
+        ])->validate();
+
+        $data = $request->input();
+        $data['computer_id'] = $id;
+        $data['component_id'] = (int)$data['component'];
+
+        ComponentComputer::create($data);
 
         return redirect()->route('computers.index');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
     }
 
     /**
@@ -101,12 +87,18 @@ class ComponentComputerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $computerId, $componentId)
+    public function update(Request $request, $computerId, $currentComponentId)
     {
-        $arr = $request->input();
+        Validator::make($request->all(), [
+            'component' => 'required',
+        ])->validate();
+
+        $data = $request->input();
+
         $componentComputer = ComponentComputer::where('computer_id', $computerId)
-            ->where('component_id', $componentId)->first();
-        $componentComputer->component_id = (int)$arr['component'];
+            ->where('component_id', $currentComponentId)->first();
+
+        $componentComputer->component_id = (int)$data['component'];
         $componentComputer->save();
 
         return redirect()->route('computers.index');
@@ -122,7 +114,9 @@ class ComponentComputerController extends Controller
     {
         $componentComputer = ComponentComputer::where('computer_id', $computerId)
             ->where('component_id', $componentId);
+
         $componentComputer->delete();
+
         return redirect()->route('computers.index', ['computer' => $computerId]);
     }
 }

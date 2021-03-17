@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 use App\Models\Computer;
 
@@ -38,10 +39,14 @@ class ComputerController extends Controller
      */
     public function store(Request $request)
     {
-        $arr = $request->input();
-        $computer = new Computer();
-        $computer->user_id = Auth::user()->id;
-        $computer->name = $arr['name'];
+        $data = $request->input();
+
+        Validator::make($request->all(), [
+            'name' => 'required'
+        ])->validate();
+
+        $data['user_id'] = Auth::user()->id;
+        $computer = Computer::create($data);
         $computer->save();
 
         return redirect()->route('computers.index');
@@ -82,9 +87,14 @@ class ComputerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $arr = $request->input();
+        $data = $request->input();
+
+        Validator::make($request->all(), [
+            'name' => 'required'
+        ])->validate();
+
         $computer = Computer::find($id);
-        $computer->name = $arr['name'];
+        $computer->name = $data['name'];
         $computer->save();
 
         return redirect()->route('computers.index');

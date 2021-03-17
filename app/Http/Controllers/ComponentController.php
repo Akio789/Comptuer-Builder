@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 use App\Models\Component;
-use Illuminate\Support\Composer;
 
 class ComponentController extends Controller
 {
@@ -39,13 +40,16 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
-        $arr = $request->input();
-        $component = new Component();
-        $component->name = $arr['name'];
-        $component->brand = $arr['brand'];
-        $component->model = $arr['model'];
-        $component->price = $arr['price'];
-        $component->save();
+        $data = $request->input();
+
+        Validator::make($request->all(), [
+            'name' => 'required|unique:components',
+            'brand' => 'required',
+            'model' => 'required',
+            'price' => 'required'
+        ])->validate();
+
+        Component::create($data);
 
         return redirect()->route('components.index');
     }
@@ -85,11 +89,22 @@ class ComponentController extends Controller
     public function update(Request $request, $id)
     {
         $component = Component::find($id);
-        $arr = $request->input();
-        $component->name = $arr['name'];
-        $component->brand = $arr['brand'];
-        $component->model = $arr['model'];
-        $component->price = $arr['price'];
+
+        Validator::make($request->all(), [
+            'name' => [
+                'required',
+                Rule::unique('components')->ignore($component->id)
+            ],
+            'brand' => 'required',
+            'model' => 'required',
+            'price' => 'required'
+        ])->validate();
+
+        $data = $request->input();
+        $component->name = $data['name'];
+        $component->brand = $data['brand'];
+        $component->model = $data['model'];
+        $component->price = $data['price'];
         $component->save();
 
         return redirect()->route('components.index');
