@@ -21,7 +21,7 @@
 				</div>
 			</div>
 			<div class="card-body">
-				<form action="{{ route('users.store') }}" method="POST">
+				<form action="{{ route('auth.register') }}" method="POST">
                 @csrf
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
@@ -40,6 +40,12 @@
 							<span class="input-group-text"><i class="fas fa-key"></i></span>
 						</div>
 						<input name="password" id="password" type="password" class="form-control" placeholder="password">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input name="password_confirmation" id="password" type="password" class="form-control" placeholder="confirm password">
 					</div>
 					<div class="form-group">
 						<input type="submit" value="Register" class="btn float-right login_btn">

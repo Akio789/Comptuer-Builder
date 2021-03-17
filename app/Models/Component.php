@@ -9,9 +9,16 @@ use App\Models\Computer;
 
 class Component extends Model
 {
+    use HasFactory;
+
     protected $table = 'components';
 
-    use HasFactory;
+    protected $fillable = [
+        'name',
+        'brand',
+        'model',
+        'price'
+    ];
 
     public function computers()
     {
