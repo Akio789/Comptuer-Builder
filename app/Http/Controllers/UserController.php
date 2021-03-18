@@ -116,6 +116,6 @@ class UserController extends Controller
             return redirect()->route('auth.logout');
         }
 
-        return redirect()->route('computers.index');
+        return redirect()->back();
     }
 }

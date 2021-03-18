@@ -20,6 +20,15 @@
 				<div class="d-flex justify-content-end social_icon">
 				</div>
 			</div>
+			@if ($errors->any())
+				<div class="alert alert-danger">
+					<ul>
+						@foreach ($errors->all() as $error)
+							<li>{{ $error }}</li>
+						@endforeach
+					</ul>
+				</div>
+			@endif
 			<div class="card-body">
 				<form action="{{ route('auth.register') }}" method="POST">
                 @csrf

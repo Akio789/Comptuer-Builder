@@ -25,6 +25,15 @@
 					<span><i class="fab fa-google-plus-square"></i></span>
 				</div>
 			</div>
+			@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 			<div class="card-body">
 				<form action="/login" method="POST">
                 @csrf
@@ -48,7 +57,7 @@
 			</div>
 			<div class="card-footer">
 				<div class="d-flex justify-content-center links">
-					Don't have an account?<a href="{{ route('users.create') }}">Sign Up</a>
+					Don't have an account?<a href="{{ route('auth.register') }}">Sign Up</a>
 				</div>
 			</div>
 		</div>

@@ -37,7 +37,7 @@
                     @csrf
                     @method('DELETE')
                     <p class="button-div">
-                        <button type="button" class="btn btn-labeled btn-success" >
+                        <button type="submit" class="btn btn-labeled btn-success" >
                             <span class="btn-label">
                                 <i class="fas fa-trash"></i>
                             </span>
