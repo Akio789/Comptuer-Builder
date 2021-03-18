@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+
+html,body{
+background-image: url('../images/background3.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'Numans', sans-serif;
+}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap');
+
+
+/* Whole website CSS*/
+
+a {
+  color: #9146ff;
+}
+a:hover {
+  color: #9146ff !important;
+}
+
+
+/* Login card CSS*/
+.container{
+height: 100%;
+align-content: center;
+}
+
+
+.card{
+height: 65vh;
+margin-top: 5vh;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.8) !important;
+}
+
+.social_icon span{
+font-size: 60px;
+margin-left: 10px;
+color: #9146ff;
+}
+
+.login-logo{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5vh;
+  height: 25vh;
+}
+.social_icon span:hover{
+  color: white;
+  cursor: pointer;
+}
+  
+.card-header h3, .card-header h2{
+  color: white;
+}
+  
+.social_icon{
+  position: absolute;
+  right: 20px;
+  top: -45px;
+}
+.input-group-prepend span{
+  width: 50px;
+  background-color: #9146ff;
+  color: black;
+  border:0 !important;
+}
+    
+input:focus{
+  outline: 0 0 0 0  !important;
+  box-shadow: 0 0 0 0 !important;  
+}
+    
+.remember{
+  color: white;
+}
+    
+.remember input{
+  width: 20px;
+  height: 20px;
+  margin-left: 15px;
+  margin-right: 5px;
+}
+    
+.login_btn{
+  color: black;
+  background-color: #9146ff;
+  width: 100px;
+}
+    
+.login_btn:hover{
+  color: black;
+  background-color: white;
+}
+    
+.links{
+  color: white;
+}
+    
+.links a{
+  margin-left: 4px;
+}
+
+/* Header CSS*/
+
+.header{
+  background-color:#1a1a1a !important;
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  height: 10vh;
+}
+
+.header-div{
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  
+}
+.header-logo{
+  float: left;
+  margin-left: 1vw;
+  padding: 0.5vh 0.5vh 0.5vh 0.5vh;
+  height: 10vh;
+}
+.header-title{
+  margin-left: 1vw;
+  float: left;
+}
+.header-menu{
+  position: relative;
+  float: right;
+  color: white;
+  height: 10vh;
+}
+.header-option{
+  position: relative;
+  float: left;
+  text-align: center;
+  margin-right: 5vh;
+}
+.header-text{
+  bottom: 2.5vh;
+  font-size: 3vh;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+  
+}
+.header-text h1,.header-text a{
+  font-size: 6vh;
+  margin-bottom: 0;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+}
+
+/* Title Banner CSS*/
+
+.title-banner{
+  background-color: #333333;
+  color:white;
+  display: flex;
+  height: 10vh;
+}
+.title-banner h2{
+  background-color: #333333;
+  color:white;
+  display: block;
+  margin: auto;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 800;
+  font-size: 5vh;
+}
+
+/* Table CSS*/
+
+.table td {
+  font-size: 2vh;
+  text-align: center;
+}
+.table th {
+  font-size: 3vh;
+  text-align: center;
+}
+.component{
+  min-height: 45px;
+  position: relative;
+  border-color: rgba(117, 117, 117, 0.66);
+  border-style: none none solid none ;
+}
+.component p {
+  float: left;
+}
+.component form{
+  margin-top: 2px;
+  position: relative;
+  float : right;
+}
+.table-buttons{
+  position: relative;
+}
+.table-buttons a,.table-buttons form{
+  float: right;
+}
+
+/*Button CSS*/
+.btn-label {
+  position: relative;
+  left: -12px;display: inline-block;
+  padding: 6px 12px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 3px 0 0 3px;
+}
+.btn-labeled {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.btn { 
+  display: block;
+  background-color: #9146ff !important;
+  border-color: #9146ff !important;
+  margin-left: auto;
+  margin-right: 2vh;
+ }
+ .button-div{
+   display: flex;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+ }
+
+ /* Info card CSS*/
+ .card-text h3, h2{
+   color: white;
+ }
+ .btn-info{
+   float: left;
+ }

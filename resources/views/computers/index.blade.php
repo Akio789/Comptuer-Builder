@@ -1,68 +1,90 @@
 @extends('layouts.main')
 
 @section('content')
-<!-- ESTO DEBE IR EN EL HEADER -->
-<div style="display: flex">
-    <div style= "background-color:#aeb6b0; border:1px solid black;  width: fit-content ;padding: 0px 5px 0px 5px">
-        <a style="color: inherit" href="/logout">Logout</a>
-    </div>
-    <div style= "background-color:#aeb6b0; border:1px solid black;  width: fit-content;padding: 0px 5px 0px 5px ">
-    <a style="color: inherit" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">Profile</a>
-    </div>
-    <div style= "background-color:#aeb6b0; border:1px solid black;  width: fit-content;padding: 0px 5px 0px 5px ">
-    <a style="color: inherit" href="{{ route('users.index') }}">List of users (In the future it will only be shown to admins)</a>
-    </div>
-    <div style= "background-color:#aeb6b0; border:1px solid black;  width: fit-content;padding: 0px 5px 0px 5px ">
-    <a style="color: inherit" href="{{ route('components.index') }}">List of Components (In the future it will only be shown to admins)</a>
-    </div>
-</div>
-
-
-<!-- HASTA AQUI -->
-
-<h1>Hello {{ Auth::user()->name }}</h1>
-<h2>List of computers</h2>
-<p>
-    <a href="{{ route('computers.create') }}">Create a computer</a>
-</p>
-<table border="1px solid black">
+<div class="title-banner"><h2 >List of computers</h2></div>
+<a href="{{ route('computers.create') }}">
+    <p class="button-div">
+    <button type="button" class="btn btn-labeled btn-success" >
+        <span class="btn-label">
+            <i class="fas fa-plus"></i>
+        </span>
+        New Computer
+    </button>
+    </p>
+</a>
+<table class="table table-striped table-dark">
     <thead>
         <tr>
-            <th>#</th>
-            <th>Name</th>
-            <td>Components</td>
-            <th>Options</th>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Components</th>
+            <th scope="col">Options</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($computers as $item)
         <tr>
-            <td>{{ $item->id }}</td>
+            <td scope="row">{{ $item->id }}</td>
             <td>{{ $item->name }}</td>
             <td>
                 @foreach ($item->components as $component)
-                <p>{{ $component->name }}</p>
-                <form action="{{ route('computer.components.destroy', ['computer' => $item->id, 'component' => $component->id]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button>Remove</button>
-                </form>
+                <div class="component">
+                    <p>{{ $component->name }}</p>
+                    <form action="{{ route('computer.components.destroy', ['computer' => $item->id, 'component' => $component->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-labeled btn-success">Remove</button>
+                    </form>
+                </div>
                 @endforeach
-                <a href="{{ route('computer.components.index', ['computer' => $item->id]) }}">See all</a>
+               <!-- <a href="{{ route('computer.components.index', ['computer' => $item->id]) }}">See all</a> -->
             </td>
             <td>
-                <a href="{{ route('computers.edit', ['computer' => $item->id]) }}"">Edit</a>
-                <form action="{{ route('computers.destroy', ['computer' => $item->id]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button>Delete</button>
-                </form>
-                <p>
-                    <a href="{{ route('computers.show', ['computer' => $item->id]) }}">Info</a>
-                </p>
-                <p>
-                    <a href="{{ route('computer.components.create', ['computer' => $item->id]) }}">Add components</a>
-                </p>
+                <div class="table-buttons">
+
+                    <form action="{{ route('computers.destroy', ['computer' => $item->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <p class="button-div">
+                        <button type="submit" class="btn btn-labeled btn-success" >
+                            <span class="btn-label">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                            Delete
+                        </button>
+                        </p>
+                    </form>
+                    <a href="{{ route('computers.edit', ['computer' => $item->id]) }}">
+                        <p class="button-div">
+                        <button type="button" class="btn btn-labeled btn-success" >
+                            <span class="btn-label">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                            Edit
+                        </button>
+                        </p>
+                    </a>
+                    <!--<a href="{{ route('computers.show', ['computer' => $item->id]) }}">
+                        <p class="button-div">
+                        <button type="button" class="btn btn-labeled btn-success" >
+                            <span class="btn-label">
+                                <i class="fas fa-info"></i>
+                            </span>
+                            Info
+                        </button>
+                        </p>
+                    </a>-->
+                    <a href="{{ route('computer.components.create', ['computer' => $item->id]) }}">
+                        <p class="button-div">
+                        <button type="button" class="btn btn-labeled btn-success" >
+                            <span class="btn-label">
+                                <i class="fas fa-plus"></i>
+                            </span>
+                            Add Component
+                        </button>
+                        </p>
+                    </a>
+                </div>
             </td>
         </tr>
         @endforeach

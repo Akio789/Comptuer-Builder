@@ -1,13 +1,12 @@
 @extends('layouts.main')
 
 @section('content')
-<a href="{{ route('computers.index') }}">Back to your computer list</a>
-<h1>Hello {{ Auth::user()->name }}</h1>
-<h2>List of users</h2>
-<table>
+<div class="title-banner"><h2>List of users</h2></div>
+
+<table class="table table-striped table-dark">
     <thead>
         <tr>
-            <th>#</th>
+            <th >#</th>
             <th>Name</th>
             <th>email</th>
         </tr>
@@ -19,11 +18,20 @@
             <td>{{ $item->name }}</td>
             <td>{{ $item->email }}</td>
             <td>
+            <div class="table-buttons">
                 <form action="{{ route('users.destroy', ['user' => $item->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button>Delete</button>
+                    <p class="button-div">
+                    <button type="submit" class="btn btn-labeled btn-success" >
+                        <span class="btn-label">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                        Delete
+                    </button>
+                    </p>
                 </form>
+            </div>
             </td>
         </tr>
         @endforeach

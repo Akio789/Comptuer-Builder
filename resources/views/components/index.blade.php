@@ -1,13 +1,18 @@
 @extends('layouts.main')
 
 @section('content')
-<a href="{{ route('computers.index') }}">Back to your computer list</a>
-<h1>Hello {{ Auth::user()->name }}</h1>
-<h2>List of components</h2>
-<p>
-    <a href="{{ route('components.create') }}">Create a component</a>
-</p>
-<table>
+<div class="title-banner"><h2>List of components</h2></div>
+<a href="{{ route('components.create') }}">
+    <p class="button-div">
+    <button type="button" class="btn btn-labeled btn-success" >
+        <span class="btn-label">
+            <i class="fas fa-plus"></i>
+        </span>
+        New Component
+    </button>
+    </p>
+</a>
+<table class="table table-striped table-dark">
     <thead>
         <tr>
             <th>#</th>
@@ -27,13 +32,40 @@
             <td>{{ $item->model }}</td>
             <td>${{ $item->price }}</td>
             <td>
-                <a href="{{ route('components.edit', ['component' => $item->id]) }}"">Edit</a>
+                <div class="table-buttons">
                 <form action="{{ route('components.destroy', ['component' => $item->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <button>Delete</button>
+                    <p class="button-div">
+                        <button type="submit" class="btn btn-labeled btn-success" >
+                            <span class="btn-label">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                            Delete
+                        </button>
+                    </p>
                 </form>
-                <a href="{{ route('components.show', ['component' => $item->id]) }}">Info</a>
+                <a href="{{ route('components.edit', ['component' => $item->id]) }}"><p class="button-div">
+                        <button type="button" class="btn btn-labeled btn-success" >
+                            <span class="btn-label">
+                                <i class="fas fa-edit"></i>
+                            </span>
+                            Edit
+                        </button>
+                        </p>
+                        </a>
+                
+                <!--<a href="{{ route('components.show', ['component' => $item->id]) }}">
+                    <p class="button-div">
+                        <button type="button" class="btn btn-labeled btn-success" >
+                            <span class="btn-label">
+                                <i class="fas fa-info"></i>
+                            </span>
+                            Info
+                        </button>
+                    </p>
+                </a>-->
+                </div>
             </td>
         </tr>
         @endforeach
