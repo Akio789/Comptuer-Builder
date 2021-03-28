@@ -28,4 +28,11 @@ class Computer extends Model
     {
         return $this->belongsToMany(Component::class);
     }
+
+    public function getTotalPriceAttribute()
+    {
+        return $this->components->reduce(function ($carry, $c) {
+            return $carry + $c->price;
+        }, 0);
+    }
 }

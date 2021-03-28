@@ -18,6 +18,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Components</th>
+            <th scope="col">Price</th>
             <th scope="col">Options</th>
         </tr>
     </thead>
@@ -39,6 +40,7 @@
                 @endforeach
                <!-- <a href="{{ route('computer.components.index', ['computer' => $item->id]) }}">See all</a> -->
             </td>
+            <td>{{ $item->total_price }}</td>
             <td>
                 <div class="table-buttons">
                     <form action="{{ route('computers.publish', ['computer' => $item->id]) }}" method="POST">
