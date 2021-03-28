@@ -113,4 +113,31 @@ class ComputerController extends Controller
 
         return redirect()->route('computers.index');
     }
+
+    /**
+     * Toggle computer is_public.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function publish($id)
+    {
+        $computer = Computer::find($id);
+        $computer->is_public = !$computer->is_public;
+        $computer->save();
+
+        return redirect()->route('computers.index');
+    }
+
+    /**
+     * Get all public computers.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function public()
+    {
+        $computers = Computer::where('is_public', true)->get();
+        return view('computers.public', ['computers' => $computers]);
+    }
 }

@@ -19,9 +19,10 @@ use App\Http\Controllers\ComponentComputerController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [ComputerController::class, 'public'])->name('index');
+Route::get('/login', function () {
     return view('index');
-})->name('index');
+})->name('auth.login');
 
 Route::any('/logout', [AuthenticationController::class, 'logout'])->name('auth.logout');
 Route::post('/login', [AuthenticationController::class, 'login'])->name('auth.login');
@@ -30,6 +31,8 @@ Route::post('/register', [AuthenticationController::class, 'register'])->name('a
 
 Route::resource('computers', ComputerController::class)
     ->middleware('auth');
+Route::put('/computers/{computer}/publish', [ComputerController::class, 'publish'])->name('computers.publish');
+
 Route::resource('users', UserController::class)
     ->middleware('auth');
 Route::resource('components', ComponentController::class)

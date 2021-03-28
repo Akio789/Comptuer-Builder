@@ -41,7 +41,18 @@
             </td>
             <td>
                 <div class="table-buttons">
-
+                    <form action="{{ route('computers.publish', ['computer' => $item->id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <p class="button-div">
+                            <button type="submit" class="btn btn-labeled btn-success" >
+                                <span class="btn-label">
+                                    <i class="fas fa-edit"></i>
+                                </span>
+                                {{ $item->is_public ? 'Make private' : 'Make public' }}
+                            </button>
+                            </p>
+                    </form>
                     <form action="{{ route('computers.destroy', ['computer' => $item->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')

@@ -16,6 +16,7 @@ class CreateComputer extends Migration
         Schema::create('computers', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->boolean('is_public')->default(false);
             $table->timestamps();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
