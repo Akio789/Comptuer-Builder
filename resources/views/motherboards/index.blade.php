@@ -21,6 +21,7 @@
             <th>Brand</th>
             <th>Model</th>
             <th>Price</th>
+            <th>Slots</th>
             <th>Options</th>
         </tr>
     </thead>
@@ -34,29 +35,24 @@
             <td>{{ $item->model }}</td>
             <td>${{ $item->price }}</td>
             <td>
+                @foreach ($item->components as $component)
+                    Type: {{ $component->type }}
+                    <br />
+                    Quantity: {{ $component->pivot->quantity }}
+                    <hr />
+                @endforeach
+            </td>
+            <td>
                 <div class="table-buttons">
-                <form action="{{ route('components.destroy', ['component' => $item->id]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <p class="button-div">
-                        <button type="submit" class="btn btn-labeled btn-success" >
-                            <span class="btn-label">
-                                <i class="fas fa-trash"></i>
-                            </span>
-                            Delete
-                        </button>
+                <a href="{{ route('motherboard.components.create', ['motherboard' => $item->id]) }}"><p class="button-div">
+                    <button type="button" class="btn btn-labeled btn-success" >
+                        <span class="btn-label">
+                            <i class="fas fa-plus"></i>
+                        </span>
+                        Add slot
+                    </button>
                     </p>
-                </form>
-                <a href="{{ route('components.edit', ['component' => $item->id]) }}">
-                    <p class="button-div">
-                        <button type="button" class="btn btn-labeled btn-success" >
-                            <span class="btn-label">
-                                <i class="fas fa-edit"></i>
-                            </span>
-                            Edit
-                        </button>
-                    </p>
-                </a>
+                    </a>
                 </div>
             </td>
         </tr>

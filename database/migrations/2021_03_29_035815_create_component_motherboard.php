@@ -16,6 +16,7 @@ class CreateComponentMotherboard extends Migration
         Schema::create('component_motherboard', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->integer('quantity');
             $table->foreignId('motherboard_id')->constrained()->onDelete('cascade');
             $table->foreignId('component_id')->constrained()->onDelete('cascade');
         });

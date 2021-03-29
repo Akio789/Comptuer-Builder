@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+use App\Models\ComponentMotherboard;
+use App\Models\Motherboard;
+use App\Models\Component;
 
 class ComponentMotherboardController extends Controller
 {
@@ -21,9 +26,15 @@ class ComponentMotherboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $motherboard = Motherboard::find($id);
+        $components = Component::all();
+
+        return view('motherboard.components.create', [
+            'motherboard' => $motherboard,
+            'components' => $components
+        ]);
     }
 
     /**
@@ -32,9 +43,20 @@ class ComponentMotherboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //
+        Validator::make($request->all(), [
+            'component' => 'required',
+            'quantity' => 'required',
+        ])->validate();
+
+        $data = $request->input();
+        $data['motherboard_id'] = $id;
+        $data['component_id'] = (int)$data['component'];
+
+        ComponentMotherboard::create($data);
+
+        return redirect()->route('motherboards.index');
     }
 
     /**
