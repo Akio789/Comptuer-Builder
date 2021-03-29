@@ -14,6 +14,18 @@
             <form action="{{ route('components.update', ['component' => $component->id]) }}" method="POST">
                 @csrf
 				@method('PUT')
+					<div class="input-group form-group">
+						<select name="type" id="type" class="form-control">
+							<option value="" disabled hidden>Select a type</option>
+							@foreach ($types as $type)
+							@if ($component->type == $type)
+								<option value="{{ $type }}" selected>{{ $type }}</option>
+							@else
+								<option value="{{ $type }}">{{ $type }}</option>
+							@endif
+							@endforeach
+						</select>
+					</div>
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>

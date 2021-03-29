@@ -16,6 +16,7 @@
     <thead>
         <tr>
             <th>#</th>
+            <th>Type</th>
             <th>Name</th>
             <th>Brand</th>
             <th>Model</th>
@@ -27,6 +28,7 @@
         @foreach ($components as $item)
         <tr>
             <td>{{ $item->id }}</td>
+            <td>{{ $item->type }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
             <td>{{ $item->model }}</td>

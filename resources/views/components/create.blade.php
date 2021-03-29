@@ -13,6 +13,14 @@
 			<div class="card-body">
             <form action="{{ route('components.store') }}" method="POST">
                 @csrf
+				<div class="input-group form-group">
+					<select name="type" id="type" class="form-control">
+						<option value="" selected disabled hidden>Select a type</option>
+						@foreach ($types as $type)
+						<option value="{{ $type }}">{{ $type }}</option>
+						@endforeach
+					</select>
+				</div>
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>

@@ -5,7 +5,11 @@ namespace App\Http;
 class Constants
 {
     const COMPONENT_TYPES = [
-        'MOTHERBOARD' => 'motherboard'
+        'RAM' => 'RAM',
+        'CPU' => 'CPU',
+        'GPU' => 'GPU',
+        'SSD' => 'SSD',
+        'HDD' => 'HDD'
     ];
 
     const SOCKET_TYPES = [

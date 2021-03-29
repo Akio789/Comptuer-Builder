@@ -17,7 +17,8 @@ class Component extends Model
         'name',
         'brand',
         'model',
-        'price'
+        'price',
+        'type'
     ];
 
     public function computers()

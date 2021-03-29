@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
 use App\Models\Component;
+use App\Http\Constants;
 
 class ComponentController extends Controller
 {
@@ -19,7 +20,7 @@ class ComponentController extends Controller
     {
         $components = Component::all();
 
-        return view('components.index', ['components' => $components]);
+        return view('components.index', ['components' => $components,]);
     }
 
     /**
@@ -29,7 +30,7 @@ class ComponentController extends Controller
      */
     public function create()
     {
-        return view('components.create');
+        return view('components.create', ['types' => Constants::COMPONENT_TYPES]);
     }
 
     /**
@@ -43,10 +44,11 @@ class ComponentController extends Controller
         $data = $request->input();
 
         Validator::make($request->all(), [
+            'type' => 'required',
             'name' => 'required|unique:components',
             'brand' => 'required',
             'model' => 'required',
-            'price' => 'required'
+            'price' => 'required',
         ])->validate();
 
         Component::create($data);
@@ -76,7 +78,10 @@ class ComponentController extends Controller
     public function edit($id)
     {
         $component = Component::find($id);
-        return view('components.edit', ['component' => $component]);
+        return view('components.edit', [
+            'component' => $component,
+            'types' => Constants::COMPONENT_TYPES
+        ]);
     }
 
     /**
@@ -91,6 +96,7 @@ class ComponentController extends Controller
         $component = Component::find($id);
 
         Validator::make($request->all(), [
+            'type' => 'required',
             'name' => [
                 'required',
                 Rule::unique('components')->ignore($component->id)
@@ -101,6 +107,7 @@ class ComponentController extends Controller
         ])->validate();
 
         $data = $request->input();
+        $component->type = $data['type'];
         $component->name = $data['name'];
         $component->brand = $data['brand'];
         $component->model = $data['model'];
