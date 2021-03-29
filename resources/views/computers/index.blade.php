@@ -28,6 +28,9 @@
             <td scope="row">{{ $item->id }}</td>
             <td>{{ $item->name }}</td>
             <td>
+                <div class="component">
+                    <p>{{ $item->motherboard ? $item->motherboard->name : 'Default motherboard' }}</p>
+                </div>
                 @foreach ($item->components as $component)
                 <div class="component">
                     <p>{{ $component->name }}</p>
