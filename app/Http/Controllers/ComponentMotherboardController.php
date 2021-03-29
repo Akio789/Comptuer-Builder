@@ -99,8 +99,13 @@ class ComponentMotherboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($motherboardId, $componentId)
     {
-        //
+        $componentMotherboard = ComponentMotherboard::where('motherboard_id', $motherboardId)
+            ->where('component_id', $componentId);
+
+        $componentMotherboard->delete();
+
+        return redirect()->route('motherboards.index', ['motherboard' => $motherboardId]);
     }
 }

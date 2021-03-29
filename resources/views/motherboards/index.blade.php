@@ -39,6 +39,12 @@
                     Type: {{ $component->type }}
                     <br />
                     Quantity: {{ $component->pivot->quantity }}
+                    <br />
+                    <form action="{{ route('motherboard.components.destroy', ['motherboard' => $item->id, 'component' => $component->id]) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-labeled btn-success">Remove</button>
+                    </form>
                     <hr />
                 @endforeach
             </td>
