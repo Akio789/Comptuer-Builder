@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AuthenticationController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\ComponentComputerController;
+use App\Http\Controllers\ComponentMotherboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +39,6 @@ Route::resource('users', UserController::class)
 Route::resource('components', ComponentController::class)
     ->middleware('auth');
 Route::resource('computer.components', ComponentComputerController::class)
+    ->middleware('auth');
+Route::resource('motherboard.components', ComponentMotherboardController::class)
     ->middleware('auth');
