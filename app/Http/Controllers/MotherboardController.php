@@ -96,6 +96,9 @@ class MotherboardController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $motherboard = Motherboard::find($id);
+        $motherboard->delete();
+
+        return redirect()->route('motherboards.index');
     }
 }

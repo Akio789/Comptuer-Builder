@@ -54,6 +54,18 @@
                     </p>
                     </a>
                 </div>
+                <form action="{{ route('motherboards.destroy', ['motherboard' => $item->id]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <p class="button-div">
+                    <button type="submit" class="btn btn-labeled btn-success" >
+                        <span class="btn-label">
+                            <i class="fas fa-trash"></i>
+                        </span>
+                        Delete
+                    </button>
+                    </p>
+                </form>
             </td>
         </tr>
         @endforeach
