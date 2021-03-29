@@ -17,7 +17,9 @@ class CreateMotherboard extends Migration
         Schema::create('motherboards', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('price');
+            $table->string('brand');
+            $table->string('model');
+            $table->float('price');
             $table->string('socket')->default(Constants::SOCKET_TYPES['1200']);
             $table->timestamps();
         });

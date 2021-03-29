@@ -4,12 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
 
-use App\Models\Component;
+use App\Models\Motherboard;
 use App\Http\Constants;
 
-class ComponentController extends Controller
+class MotherboardController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,9 +17,8 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        $components = Component::all();
-
-        return view('components.index', ['components' => $components]);
+        $motherboards = Motherboard::all();
+        return view('motherboards.index', ['motherboards' => $motherboards]);
     }
 
     /**
@@ -30,7 +28,7 @@ class ComponentController extends Controller
      */
     public function create()
     {
-        return view('components.create', ['types' => Constants::COMPONENT_TYPES]);
+        return view('motherboards.create', ['types' => Constants::SOCKET_TYPES]);
     }
 
     /**
@@ -44,16 +42,16 @@ class ComponentController extends Controller
         $data = $request->input();
 
         Validator::make($request->all(), [
-            'type' => 'required',
-            'name' => 'required|unique:components',
+            'socket' => 'required',
+            'name' => 'required|unique:motherboards',
             'brand' => 'required',
             'model' => 'required',
             'price' => 'required',
         ])->validate();
 
-        Component::create($data);
+        Motherboard::create($data);
 
-        return redirect()->route('components.index');
+        return redirect()->route('motherboards.index');
     }
 
     /**
@@ -64,9 +62,7 @@ class ComponentController extends Controller
      */
     public function show($id)
     {
-        $component = Component::find($id);
-
-        return view('components.info', ['component' => $component]);
+        //
     }
 
     /**
@@ -77,11 +73,7 @@ class ComponentController extends Controller
      */
     public function edit($id)
     {
-        $component = Component::find($id);
-        return view('components.edit', [
-            'component' => $component,
-            'types' => Constants::COMPONENT_TYPES
-        ]);
+        //
     }
 
     /**
@@ -93,28 +85,7 @@ class ComponentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $component = Component::find($id);
-
-        Validator::make($request->all(), [
-            'type' => 'required',
-            'name' => [
-                'required',
-                Rule::unique('components')->ignore($component->id)
-            ],
-            'brand' => 'required',
-            'model' => 'required',
-            'price' => 'required'
-        ])->validate();
-
-        $data = $request->input();
-        $component->type = $data['type'];
-        $component->name = $data['name'];
-        $component->brand = $data['brand'];
-        $component->model = $data['model'];
-        $component->price = $data['price'];
-        $component->save();
-
-        return redirect()->route('components.index');
+        //
     }
 
     /**
@@ -125,8 +96,6 @@ class ComponentController extends Controller
      */
     public function destroy($id)
     {
-        $component = Component::find($id);
-        $component->delete();
-        return redirect()->route('components.index');
+        //
     }
 }

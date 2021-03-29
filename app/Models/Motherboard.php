@@ -11,6 +11,14 @@ class Motherboard extends Model
 
     protected $table = 'motherboards';
 
+    protected $fillable = [
+        'name',
+        'brand',
+        'model',
+        'price',
+        'socket'
+    ];
+
     public function computers()
     {
         return $this->hasMany(Computer::class);
