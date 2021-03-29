@@ -18,7 +18,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Components</th>
-            <th scope="col">Price</th>
+            <th scope="col">Total Price</th>
             <th scope="col">Options</th>
         </tr>
     </thead>

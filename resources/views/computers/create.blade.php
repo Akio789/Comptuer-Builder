@@ -33,6 +33,15 @@
 						</div>
 						<input name="name" id="name" type="text" class="form-control" placeholder="name">
 					</div>
+                    <div class="input-group form-group">
+						<select name="motherboard_id" id="motherboard_id" class="form-control">
+							<option value="invalid" selected>Select a motherboard</option>
+							<option value="{{ $defaultMotherboard->id }}">{{ $defaultMotherboard->name }}</option>
+							@foreach ($motherboards as $motherboard)
+							<option value="{{ $motherboard->id }}">{{ $motherboard->name }}</option>
+							@endforeach
+						</select>
+					</div>
 					<div class="form-group">
 						<input type="submit" value="Store" class="btn float-right login_btn">
 					</div>

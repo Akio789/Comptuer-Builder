@@ -5,8 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
 
 use App\Models\Computer;
+use App\Models\Component;
+use App\Http\Constants;
+use App\Models\Motherboard;
 
 class ComputerController extends Controller
 {
@@ -28,7 +32,13 @@ class ComputerController extends Controller
      */
     public function create()
     {
-        return view('computers.create');
+        $motherboards = Motherboard::all();
+        $defaultMotherboard = new Motherboard();
+        $defaultMotherboard->name = 'Default motherboard';
+        return view('computers.create', [
+            'motherboards' => $motherboards,
+            'defaultMotherboard' => $defaultMotherboard
+        ]);
     }
 
     /**
@@ -42,7 +52,10 @@ class ComputerController extends Controller
         $data = $request->input();
 
         Validator::make($request->all(), [
-            'name' => 'required'
+            'name' => 'required',
+            'motherboard_id' => 'nullable|integer',
+        ], [
+            'motherboard_id.integer' => 'The motherboard field is required.'
         ])->validate();
 
         $data['user_id'] = Auth::user()->id;

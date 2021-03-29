@@ -3,8 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Http\Constants;
 
-class CreateComputer extends Migration
+class CreateMotherboard extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +14,12 @@ class CreateComputer extends Migration
      */
     public function up()
     {
-        Schema::create('computers', function (Blueprint $table) {
+        Schema::create('motherboards', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->boolean('is_public')->default(false);
+            $table->integer('price');
+            $table->string('socket')->default(Constants::SOCKET_TYPES['1200']);
             $table->timestamps();
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->foreignId('motherboard_id')->nullable()->constrained()->onDelete('set null');
         });
     }
 
@@ -30,6 +30,6 @@ class CreateComputer extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('motherboard');
     }
 }

@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\User;
 use App\Models\Component;
+use App\Models\Motherboard;
+use App\Http\Constants;
 
 class Computer extends Model
 {
@@ -16,12 +18,18 @@ class Computer extends Model
 
     protected $fillable = [
         'name',
-        'user_id'
+        'user_id',
+        'motherboard_id'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function motherboard()
+    {
+        return $this->belongsTo(Motherboard::class);
     }
 
     public function components()
@@ -31,8 +39,12 @@ class Computer extends Model
 
     public function getTotalPriceAttribute()
     {
-        return $this->components->reduce(function ($carry, $c) {
+        $motherboardPrice = $this->motherboard
+            ? $this->motherboard->price
+            : Constants::DEFAULT_MOTHERBOARD_PRICE;
+        $componentsPrice = $this->components->reduce(function ($carry, $c) {
             return $carry + $c->price;
         }, 0);
+        return $motherboardPrice + $componentsPrice;
     }
 }
