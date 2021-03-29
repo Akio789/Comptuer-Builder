@@ -11,8 +11,9 @@
 				</div>
 			</div>
 			<div class="card-body">
-            <form action="{{ route('components.store') }}" method="POST">
+            <form action="{{ route('components.update', ['component' => $component->id]) }}" method="POST">
                 @csrf
+				@method('PUT')
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
