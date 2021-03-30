@@ -66,11 +66,11 @@ class ComponentComputerController extends Controller
         }
 
         $slots = ComponentMotherboard::where('motherboard_id', $motherboard->id)->get();
-        $availableComponentsCount = [];
+        $remainingSlots = [];
         foreach ($slots as $slot) {
-            $availableComponentsCount[$slot->component_type] = $slot->quantity;
+            $remainingSlots[$slot->component_type] = $slot->quantity;
             if (array_key_exists($slot->component_type, $currentComponentsCount)) {
-                $availableComponentsCount[$slot->component_type] -= $currentComponentsCount[$slot->component_type];
+                $remainingSlots[$slot->component_type] -= $currentComponentsCount[$slot->component_type];
             }
         }
 
@@ -78,7 +78,7 @@ class ComponentComputerController extends Controller
             'computer' => $computer,
             'motherboard' => $motherboard,
             'availableComponents' => $availableComponents,
-            'availableComponentsCount' => $availableComponentsCount
+            'remainingSlots' => $remainingSlots
         ]);
     }
 

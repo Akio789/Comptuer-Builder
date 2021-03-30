@@ -15,7 +15,7 @@
 			<br />
 			Socket: {{ $motherboard->socket }}
 			<br />
-			@foreach ($availableComponentsCount as $key => $val)
+			@foreach ($remainingSlots as $key => $val)
 			{{ $val }} {{ $key }} left
 			<br />			
 			@endforeach
