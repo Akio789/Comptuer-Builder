@@ -39,9 +39,7 @@ class Computer extends Model
 
     public function getTotalPriceAttribute()
     {
-        $motherboardPrice = $this->motherboard
-            ? $this->motherboard->price
-            : Constants::DEFAULT_MOTHERBOARD_PRICE;
+        $motherboardPrice = $this->motherboard ? $this->motherboard->price : 0;
         $componentsPrice = $this->components->reduce(function ($carry, $c) {
             return $carry + $c->price;
         }, 0);

@@ -33,11 +33,8 @@ class ComputerController extends Controller
     public function create()
     {
         $motherboards = Motherboard::all();
-        $defaultMotherboard = new Motherboard();
-        $defaultMotherboard->name = 'Default motherboard';
         return view('computers.create', [
-            'motherboards' => $motherboards,
-            'defaultMotherboard' => $defaultMotherboard
+            'motherboards' => $motherboards
         ]);
     }
 

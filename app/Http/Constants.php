@@ -16,6 +16,4 @@ class Constants
         '1200' => '1200',
         '1155' => '1155'
     ];
-
-    const DEFAULT_MOTHERBOARD_PRICE = 100;
 }

@@ -36,7 +36,6 @@
                     <div class="input-group form-group">
 						<select name="motherboard_id" id="motherboard_id" class="form-control">
 							<option value="invalid" selected>Select a motherboard</option>
-							<option value="{{ $defaultMotherboard->id }}">{{ $defaultMotherboard->name }}</option>
 							@foreach ($motherboards as $motherboard)
 							<option value="{{ $motherboard->id }}">{{ $motherboard->name }}</option>
 							@endforeach
