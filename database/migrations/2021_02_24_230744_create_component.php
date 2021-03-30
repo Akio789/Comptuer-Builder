@@ -16,6 +16,7 @@ class CreateComponent extends Migration
         Schema::create('components', function (Blueprint $table) {
             $table->id();
             $table->string('type');
+            $table->string('socket');
             $table->string('name');
             $table->string('brand');
             $table->string('model');

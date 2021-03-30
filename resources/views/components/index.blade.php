@@ -17,6 +17,7 @@
         <tr>
             <th>#</th>
             <th>Type</th>
+            <th>Socket</th>
             <th>Name</th>
             <th>Brand</th>
             <th>Model</th>
@@ -29,6 +30,7 @@
         <tr>
             <td>{{ $item->id }}</td>
             <td>{{ $item->type }}</td>
+            <td>{{ $item->socket }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
             <td>{{ $item->model }}</td>

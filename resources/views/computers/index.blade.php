@@ -29,7 +29,7 @@
             <td>{{ $item->name }}</td>
             <td>
                 <div class="component">
-                    <p>{{ $item->motherboard ? $item->motherboard->name : 'No motherboard selected' }}</p>
+                    <p>Mohterboard: {{ $item->motherboard ? $item->motherboard->name : 'No motherboard' }}</p>
                 </div>
                 @foreach ($item->components as $component)
                 <div class="component">

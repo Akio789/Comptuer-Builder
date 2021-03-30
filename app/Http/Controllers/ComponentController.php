@@ -30,7 +30,10 @@ class ComponentController extends Controller
      */
     public function create()
     {
-        return view('components.create', ['types' => Constants::COMPONENT_TYPES]);
+        return view('components.create', [
+            'types' => Constants::COMPONENT_TYPES,
+            'sockets' => Constants::SOCKET_TYPES
+        ]);
     }
 
     /**
@@ -45,6 +48,7 @@ class ComponentController extends Controller
 
         Validator::make($request->all(), [
             'type' => 'required',
+            'socket' => 'required',
             'name' => 'required|unique:components',
             'brand' => 'required',
             'model' => 'required',
@@ -80,7 +84,8 @@ class ComponentController extends Controller
         $component = Component::find($id);
         return view('components.edit', [
             'component' => $component,
-            'types' => Constants::COMPONENT_TYPES
+            'types' => Constants::COMPONENT_TYPES,
+            'sockets' => Constants::SOCKET_TYPES
         ]);
     }
 
@@ -97,6 +102,7 @@ class ComponentController extends Controller
 
         Validator::make($request->all(), [
             'type' => 'required',
+            'socket' => 'required',
             'name' => [
                 'required',
                 Rule::unique('components')->ignore($component->id)
@@ -108,6 +114,7 @@ class ComponentController extends Controller
 
         $data = $request->input();
         $component->type = $data['type'];
+        $component->socket = $data['socket'];
         $component->name = $data['name'];
         $component->brand = $data['brand'];
         $component->model = $data['model'];

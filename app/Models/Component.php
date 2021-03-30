@@ -15,6 +15,7 @@ class Component extends Model
 
     protected $fillable = [
         'name',
+        'socket',
         'brand',
         'model',
         'price',

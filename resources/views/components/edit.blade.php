@@ -26,6 +26,18 @@
 							@endforeach
 						</select>
 					</div>
+					<div class="input-group form-group">
+						<select name="socket" id="socket" class="form-control">
+							<option value="" disabled hidden>Select a type</option>
+							@foreach ($sockets as $socket)
+							@if ($component->socket == $socket)
+								<option value="{{ $socket }}" selected>{{ $socket }}</option>
+							@else
+								<option value="{{ $socket }}">{{ $socket }}</option>
+							@endif
+							@endforeach
+						</select>
+					</div>
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
