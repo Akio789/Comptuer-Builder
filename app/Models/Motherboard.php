@@ -24,8 +24,8 @@ class Motherboard extends Model
         return $this->hasMany(Computer::class);
     }
 
-    public function components()
+    public function slots()
     {
-        return $this->belongsToMany(Component::class)->withPivot('quantity');
+        return $this->hasMany(ComponentMotherboard::class);
     }
 }

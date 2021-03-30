@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Constants;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,14 +27,13 @@ class ComponentMotherboardController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($id)
+    public function create(Request $request)
     {
-        $motherboard = Motherboard::find($id);
-        $components = Component::all();
+        $motherboard = Motherboard::find($request->motherboard);
 
         return view('motherboard.components.create', [
             'motherboard' => $motherboard,
-            'components' => $components
+            'components' => Constants::COMPONENT_TYPES
         ]);
     }
 
@@ -43,16 +43,14 @@ class ComponentMotherboardController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
         Validator::make($request->all(), [
-            'component' => 'required',
+            'component_type' => 'required',
             'quantity' => 'required',
         ])->validate();
 
         $data = $request->input();
-        $data['motherboard_id'] = $id;
-        $data['component_id'] = (int)$data['component'];
 
         ComponentMotherboard::create($data);
 
@@ -99,13 +97,12 @@ class ComponentMotherboardController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($motherboardId, $componentId)
+    public function destroy($id)
     {
-        $componentMotherboard = ComponentMotherboard::where('motherboard_id', $motherboardId)
-            ->where('component_id', $componentId);
+        $componentMotherboard = ComponentMotherboard::find($id);
 
         $componentMotherboard->delete();
 
-        return redirect()->route('motherboards.index', ['motherboard' => $motherboardId]);
+        return redirect()->route('motherboards.index');
     }
 }

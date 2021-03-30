@@ -35,12 +35,12 @@
             <td>{{ $item->model }}</td>
             <td>${{ $item->price }}</td>
             <td>
-                @foreach ($item->components as $component)
-                    Type: {{ $component->type }}
+                @foreach ($item->slots as $slot)
+                    Type: {{ $slot->component_type }}
                     <br />
-                    Quantity: {{ $component->pivot->quantity }}
+                    Quantity: {{ $slot->quantity }}
                     <br />
-                    <form action="{{ route('motherboard.components.destroy', ['motherboard' => $item->id, 'component' => $component->id]) }}" method="POST">
+                    <form action="{{ route('slots.destroy', ['slot' => $slot->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-labeled btn-success">Remove</button>
@@ -50,7 +50,7 @@
             </td>
             <td>
                 <div class="table-buttons">
-                <a href="{{ route('motherboard.components.create', ['motherboard' => $item->id]) }}"><p class="button-div">
+                <a href="{{ route('slots.create', ['motherboard' => $item->id]) }}"><p class="button-div">
                     <button type="button" class="btn btn-labeled btn-success" >
                         <span class="btn-label">
                             <i class="fas fa-plus"></i>

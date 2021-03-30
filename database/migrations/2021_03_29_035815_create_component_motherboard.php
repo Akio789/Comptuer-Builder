@@ -17,8 +17,8 @@ class CreateComponentMotherboard extends Migration
             $table->id();
             $table->timestamps();
             $table->integer('quantity');
+            $table->string('component_type');
             $table->foreignId('motherboard_id')->constrained()->onDelete('cascade');
-            $table->foreignId('component_id')->constrained()->onDelete('cascade');
         });
     }
 

@@ -43,5 +43,5 @@ Route::resource('computer.components', ComponentComputerController::class)
     ->middleware('auth');
 Route::resource('motherboards', MotherboardController::class)
     ->middleware('auth');
-Route::resource('motherboard.components', ComponentMotherboardController::class)
+Route::resource('slots', ComponentMotherboardController::class)
     ->middleware('auth');

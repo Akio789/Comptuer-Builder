@@ -12,7 +12,7 @@ class ComponentMotherboard extends Model
     protected $table = 'component_motherboard';
 
     protected $fillable = [
-        'component_id',
+        'component_type',
         'motherboard_id',
         'quantity'
     ];

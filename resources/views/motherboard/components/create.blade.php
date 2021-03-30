@@ -11,16 +11,17 @@
 				</div>
 			</div>
 			<div class="card-body">
-            <form action="{{ route('motherboard.components.store', ['motherboard' => $motherboard->id]) }}" method="POST">
+            <form action="{{ route('slots.store') }}" method="POST">
                 @csrf
+					<input name="motherboard_id" id="motherboard_id" type="text" hidden value="{{ $motherboard->id }}">
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
 						</div>
-						<select name="component" id="component" class="form-control">
-                            <option value="" selected disabled hidden>Select a component</option>
-                            @foreach ($components as $component)
-                            <option value="{{ $component->id }}">{{ $component->name }}</option>
+						<select name="component_type" id="component_type" class="form-control">
+                            <option value="" selected disabled hidden>Select a component type</option>
+                            @foreach ($components as $key => $val)
+                            <option value="{{ $key }}">{{ $val }}</option>
                             @endforeach
                         </select>
 					</div>
