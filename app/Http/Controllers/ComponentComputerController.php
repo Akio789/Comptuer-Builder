@@ -9,6 +9,7 @@ use App\Models\Component;
 use App\Models\ComponentComputer;
 use App\Models\Motherboard;
 use App\Http\Constants;
+use App\Models\ComponentMotherboard;
 use Illuminate\Support\Facades\Validator;
 
 class ComponentComputerController extends Controller
@@ -64,12 +65,12 @@ class ComponentComputerController extends Controller
                 : 1;
         }
 
-        $allowedComponentsFromMotherboard = $motherboard->components;
+        $slots = ComponentMotherboard::where('motherboard_id', $motherboard->id)->get();
         $availableComponentsCount = [];
-        foreach ($allowedComponentsFromMotherboard as $c) {
-            $availableComponentsCount[$c->type] = $c->pivot->quantity;
-            if (array_key_exists($c->type, $currentComponentsCount)) {
-                $availableComponentsCount[$c->type] -= $currentComponentsCount[$c->type];
+        foreach ($slots as $slot) {
+            $availableComponentsCount[$slot->component_type] = $slot->quantity;
+            if (array_key_exists($slot->component_type, $currentComponentsCount)) {
+                $availableComponentsCount[$slot->component_type] -= $currentComponentsCount[$slot->component_type];
             }
         }
 
