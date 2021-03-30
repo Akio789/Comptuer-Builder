@@ -55,7 +55,6 @@ class ComponentComputerController extends Controller
     {
         $computer = Computer::find($id);
         $motherboard = $computer->motherboard;
-        $availableComponents = Component::where('socket', $motherboard->socket)->get();
 
         $currentComponents = $computer->components;
         $currentComponentsCount = [];
@@ -71,6 +70,19 @@ class ComponentComputerController extends Controller
             $remainingSlots[$slot->component_type] = $slot->quantity;
             if (array_key_exists($slot->component_type, $currentComponentsCount)) {
                 $remainingSlots[$slot->component_type] -= $currentComponentsCount[$slot->component_type];
+            }
+        }
+
+        $fittingComponents = Component::where('socket', $motherboard->socket)->get();
+
+        $remainingSlotsTypes = array_filter($remainingSlots, function ($val, $key) {
+            return $val > 0;
+        }, ARRAY_FILTER_USE_BOTH);
+
+        $availableComponents = [];
+        foreach ($fittingComponents as $component) {
+            if (array_key_exists($component->type, $remainingSlotsTypes)) {
+                array_push($availableComponents, $component);
             }
         }
 
