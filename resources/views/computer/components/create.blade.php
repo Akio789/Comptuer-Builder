@@ -11,6 +11,14 @@
 				</div>
 			</div>
 			<div class="card-body">
+			Motherboard: {{ $motherboard->name }}
+			<br />
+			Socket: {{ $motherboard->socket }}
+			<br />
+			@foreach ($availableComponentsCount as $key => $val)
+			{{ $val }} {{ $key }} left
+			<br />			
+			@endforeach
             <form action="{{ route('computer.components.store', ['computer' => $computer->id]) }}" method="POST">
                 @csrf
                     <div class="input-group form-group">

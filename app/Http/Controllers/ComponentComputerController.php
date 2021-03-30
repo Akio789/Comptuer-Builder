@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\Computer;
 use App\Models\Component;
 use App\Models\ComponentComputer;
+use App\Models\Motherboard;
+use App\Http\Constants;
 use Illuminate\Support\Facades\Validator;
 
 class ComponentComputerController extends Controller
@@ -51,11 +53,31 @@ class ComponentComputerController extends Controller
     public function create($id)
     {
         $computer = Computer::find($id);
-        $availableComponents = $this->getAvailableComponents($computer);
+        $motherboard = $computer->motherboard;
+        $availableComponents = Component::where('socket', $motherboard->socket)->get();
+
+        $currentComponents = $computer->components;
+        $currentComponentsCount = [];
+        foreach ($currentComponents as $c) {
+            $currentComponentsCount[$c->type] = array_key_exists($c->type, $currentComponentsCount)
+                ? $currentComponentsCount[$c->type] + 1
+                : 1;
+        }
+
+        $allowedComponentsFromMotherboard = $motherboard->components;
+        $availableComponentsCount = [];
+        foreach ($allowedComponentsFromMotherboard as $c) {
+            $availableComponentsCount[$c->type] = $c->pivot->quantity;
+            if (array_key_exists($c->type, $currentComponentsCount)) {
+                $availableComponentsCount[$c->type] -= $currentComponentsCount[$c->type];
+            }
+        }
 
         return view('computer.components.create', [
             'computer' => $computer,
-            'availableComponents' => $availableComponents
+            'motherboard' => $motherboard,
+            'availableComponents' => $availableComponents,
+            'availableComponentsCount' => $availableComponentsCount
         ]);
     }
 
@@ -113,7 +135,7 @@ class ComponentComputerController extends Controller
     public function destroy($computerId, $componentId)
     {
         $componentComputer = ComponentComputer::where('computer_id', $computerId)
-            ->where('component_id', $componentId);
+            ->where('component_id', $componentId)->first();
 
         $componentComputer->delete();
 
