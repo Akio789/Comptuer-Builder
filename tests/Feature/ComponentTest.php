@@ -17,7 +17,7 @@ class ComponentTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function test_componentes_index()
     {
         // Mock user logged in
         $user = User::factory()->create();
