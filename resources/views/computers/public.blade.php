@@ -26,3 +26,16 @@
         @endforeach
     </tbody>
 </table>
+
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+<script>
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+    var pusher = new Pusher('fc8393c97b973a9386db', {
+        cluster: 'us3'
+    });
+    var channel = pusher.subscribe('public-computers');
+    channel.bind('status-changed', function(data) {
+        alert(JSON.stringify(data));
+    });
+</script>

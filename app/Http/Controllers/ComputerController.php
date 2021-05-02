@@ -10,6 +10,7 @@ use Illuminate\Validation\Rule;
 use App\Models\Computer;
 use App\Models\Component;
 use App\Http\Constants;
+use App\Jobs\Broadcast;
 use App\Models\Motherboard;
 
 class ComputerController extends Controller
@@ -135,6 +136,9 @@ class ComputerController extends Controller
         $computer = Computer::find($id);
         $computer->is_public = !$computer->is_public;
         $computer->save();
+
+        // Notify computer public status change
+        Broadcast::dispatch($computer);
 
         return redirect()->route('computers.index');
     }
