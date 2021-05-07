@@ -1,5 +1,5 @@
-<div class = "header-option header-div"><a class = header-text href="/login">Login</a></div>
-<div class = "header-option header-div"><a class = header-text href="/register">Sign Up</a></div>
+@include('layouts.partials.head')
+@include('layouts.partials.headerpublic')
 <div class="title-banner"><h2 >List public of computers</h2></div>
 <table class="table table-striped table-dark">
     <thead>
@@ -36,6 +36,6 @@
     });
     var channel = pusher.subscribe('public-computers');
     channel.bind('status-changed', function(data) {
-        alert(JSON.stringify(data));
+        alert("Ha habido un cambio en las computadoras publicas, refresca la página para verlos");
     });
 </script>

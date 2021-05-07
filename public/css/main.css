@@ -6,6 +6,7 @@ background-size: cover;
 background-repeat: no-repeat;
 height: 100%;
 font-family: 'Numans', sans-serif;
+color: white;
 }
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;800&display=swap');
 
@@ -233,9 +234,10 @@ input:focus{
  }
 
  /* Info card CSS*/
- .card-text h3, h2{
-   color: white;
+ .card-text h3, h2,h4{
+   color: white!important;
  }
  .btn-info{
    float: left;
  }
+
