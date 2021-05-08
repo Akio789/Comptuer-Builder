@@ -21,6 +21,7 @@ class CreateComponent extends Migration
             $table->string('brand');
             $table->string('model');
             $table->float('price');
+            $table->string('capacity');
             $table->timestamps();
         });
     }

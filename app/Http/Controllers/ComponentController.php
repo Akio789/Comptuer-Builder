@@ -28,12 +28,16 @@ class ComponentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('components.create', [
-            'types' => Constants::COMPONENT_TYPES,
-            'sockets' => Constants::SOCKET_TYPES
-        ]);
+        $type = $request->query()['type'];
+        $sockets = Constants::SOCKETS[$type];
+
+        $data = ['sockets' => $sockets];
+
+        $targetView = 'components.types.create-' . $type;
+
+        return view($targetView, $data);
     }
 
     /**
@@ -44,7 +48,9 @@ class ComponentController extends Controller
      */
     public function store(Request $request)
     {
+        $type = $request->query()['type'];
         $data = $request->input();
+        $data['type'] = $type;
 
         Validator::make($request->all(), [
             'type' => 'required',
@@ -135,5 +141,10 @@ class ComponentController extends Controller
         $component = Component::find($id);
         $component->delete();
         return redirect()->route('components.index');
+    }
+
+    public function chooseType()
+    {
+        return view('components.chooseType');
     }
 }

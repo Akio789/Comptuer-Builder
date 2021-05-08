@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="title-banner"><h2>List of components</h2></div>
-<a href="{{ route('components.create') }}">
+<a href="{{ route('components.chooseType') }}">
     <p class="button-div">
     <button type="button" class="btn btn-labeled btn-success" >
         <span class="btn-label">

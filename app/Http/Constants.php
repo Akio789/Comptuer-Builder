@@ -16,4 +16,15 @@ class Constants
         '1200' => '1200',
         '1155' => '1155'
     ];
+
+    const SOCKETS = [
+        'ram' => ['DDR3', 'DDR4']
+    ];
+
+    const CAPACITY_PLACEHOLDERS = [
+        'ram' => [
+            'type' => 'number',
+            'placeholder' => '8 GB'
+        ]
+    ];
 }
