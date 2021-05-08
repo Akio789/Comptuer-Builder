@@ -11,13 +11,11 @@
 				</div>
 			</div>
 			<div class="card-body">
-			Motherboard: {{ $motherboard->name }}
-			<br />
-			Socket: {{ $motherboard->socket }}
-			<br />
+			<h4>Motherboard: {{ $motherboard->name }}</h4>
+			
+			<h4>Socket: {{ $motherboard->socket }}</h4>
 			@foreach ($remainingSlots as $key => $val)
-			{{ $val }} {{ $key }} left
-			<br />			
+			<h4>{{ $val }} {{ $key }} left</h4>		
 			@endforeach
             <form action="{{ route('computer.components.store', ['computer' => $computer->id]) }}" method="POST">
                 @csrf
