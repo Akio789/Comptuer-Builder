@@ -6,12 +6,12 @@
 	<div class="d-flex justify-content-center">
 		<div class="card">
 			<div class="card-header">
-				<h3>Create new RAM</h3>
+				<h3>Create new CPU</h3>
 				<div class="d-flex justify-content-end social_icon">
 				</div>
 			</div>
 			<div class="card-body">
-            <form action="{{ route('components.store', ['type' => 'ram']) }}" method="POST">
+            <form action="{{ route('components.store', ['type' => 'cpu']) }}" method="POST">
                 @csrf
 				<div class="input-group form-group">
 					<select name="socket" id="socket" class="form-control">
@@ -49,7 +49,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
 						</div>
-						<input name="capacity" id="capacity" type="number" class="form-control" placeholder="memory (GB)">
+						<input name="capacity" id="capacity" type="text" class="form-control" placeholder="Clock speed (GHz)">
 					</div>
                     <div class="form-group">
 						<input type="submit" value="Store" class="btn float-right login_btn">

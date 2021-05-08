@@ -9,6 +9,11 @@
 				RAM
 			</button>
 		</a>
+		<a href="{{ route('components.list', ['type' =>  'cpu']) }}">
+			<button type="button" class="m-2 btn btn-centered btn-labeled btn-success btn-info" >
+				CPU
+			</button>
+		</a>
 	</div>
 </div>
 @endsection
