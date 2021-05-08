@@ -16,8 +16,9 @@ class CreateComponentMotherboard extends Migration
         Schema::create('component_motherboard', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->integer('quantity');
+            $table->integer('quantity')->nullable();
             $table->string('component_type');
+            $table->string('socket')->nullable();
             $table->foreignId('motherboard_id')->constrained()->onDelete('cascade');
         });
     }

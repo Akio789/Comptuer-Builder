@@ -67,7 +67,7 @@ class ComponentComputerController extends Controller
         $slots = ComponentMotherboard::where('motherboard_id', $motherboard->id)->get();
         $remainingSlots = [];
         foreach ($slots as $slot) {
-            $remainingSlots[$slot->component_type] = $slot->quantity;
+            $remainingSlots[$slot->component_type . $slot->socket] = $slot->quantity;
             if (array_key_exists($slot->component_type, $currentComponentsCount)) {
                 $remainingSlots[$slot->component_type] -= $currentComponentsCount[$slot->component_type];
             }

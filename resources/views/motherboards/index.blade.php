@@ -40,6 +40,8 @@
                     <br />
                     Quantity: {{ $slot->quantity }}
                     <br />
+                    Socket: {{ $slot->socket }}
+                    <br />
                     <form action="{{ route('slots.destroy', ['slot' => $slot->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')

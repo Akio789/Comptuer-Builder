@@ -46,4 +46,5 @@ Route::resource('motherboards', MotherboardController::class)
 Route::resource('slots', ComponentMotherboardController::class)
     ->middleware('auth');
 
-Route::get('/component', [ComponentController::class, 'list'])->name('components.list');
+Route::get('/component', [ComponentController::class, 'list'])->name('components.list')->middleware('auth');
+Route::post('/component', [ComponentMotherboardController::class, 'storeStep2'])->name('slot.step2')->middleware('auth');

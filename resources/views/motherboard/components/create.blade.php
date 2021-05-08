@@ -11,9 +11,8 @@
 				</div>
 			</div>
 			<div class="card-body">
-            <form action="{{ route('slots.store') }}" method="POST">
+            <form action="{{ route('slots.store', ['motherboard' => $motherboard->id]) }}" method="POST">
                 @csrf
-					<input name="motherboard_id" id="motherboard_id" type="text" hidden value="{{ $motherboard->id }}">
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
@@ -25,14 +24,8 @@
                             @endforeach
                         </select>
 					</div>
-					<div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-desktop"></i></span>
-						</div>
-						<input name="quantity" id="quantity" type="number" class="form-control" placeholder="quantity" value="1">
-					</div>
                     <div class="form-group">
-						<input type="submit" value="Add" class="btn float-right login_btn">
+						<input type="submit" value="Continue" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>

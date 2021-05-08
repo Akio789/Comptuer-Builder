@@ -45,14 +45,31 @@ class ComponentMotherboardController extends Controller
      */
     public function store(Request $request)
     {
+        $motherboard_id = $request->query()['motherboard'];
         Validator::make($request->all(), [
-            'component_type' => 'required',
-            'quantity' => 'required',
+            'component_type' => 'required'
         ])->validate();
 
         $data = $request->input();
+        $data['motherboard_id'] = $motherboard_id;
+        $compMotherboard = ComponentMotherboard::create($data);
 
-        ComponentMotherboard::create($data);
+        return view('motherboard.components.create-step2', [
+            'type' => $data['component_type'],
+            'sockets' => Constants::SOCKETS[strtolower($data['component_type'])],
+            'id' => $compMotherboard->id
+        ]);
+    }
+
+    public function storeStep2(Request $request)
+    {
+        $compMotherboardId = $request->query()['id'];
+
+        $data = $request->input();
+        $compMotherboard = ComponentMotherboard::find($compMotherboardId);
+        $compMotherboard->socket = $data['socket'];
+        $compMotherboard->quantity = $data['quantity'];
+        $compMotherboard->save();
 
         return redirect()->route('motherboards.index');
     }

@@ -14,6 +14,7 @@ class ComponentMotherboard extends Model
     protected $fillable = [
         'component_type',
         'motherboard_id',
-        'quantity'
+        'quantity',
+        'socket'
     ];
 }
