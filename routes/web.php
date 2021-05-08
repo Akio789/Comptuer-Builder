@@ -9,6 +9,7 @@ use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\ComponentComputerController;
 use App\Http\Controllers\ComponentMotherboardController;
 use App\Http\Controllers\MotherboardController;
+use App\Http\Controllers\RamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +45,7 @@ Route::resource('computer.components', ComponentComputerController::class)
 Route::resource('motherboards', MotherboardController::class)
     ->middleware('auth');
 Route::resource('slots', ComponentMotherboardController::class)
+    ->middleware('auth');
+
+Route::resource('ram', RamController::class)
     ->middleware('auth');

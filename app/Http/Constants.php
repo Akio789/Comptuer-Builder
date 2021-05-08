@@ -16,4 +16,6 @@ class Constants
         '1200' => '1200',
         '1155' => '1155'
     ];
+
+    const RAM_TYPES = ['DDR3', 'DDR4'];
 }
