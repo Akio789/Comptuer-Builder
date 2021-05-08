@@ -16,7 +16,7 @@ class RamController extends Controller
      */
     public function index()
     {
-        //
+        return view('components.ram.index', ['rams' => Ram::all()]);
     }
 
     /**
@@ -50,7 +50,7 @@ class RamController extends Controller
 
         Ram::create($data);
 
-        return redirect()->route('components.index');
+        return redirect()->route('ram.index');
     }
 
     /**
