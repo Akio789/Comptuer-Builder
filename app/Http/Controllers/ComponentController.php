@@ -18,9 +18,16 @@ class ComponentController extends Controller
      */
     public function index()
     {
-        $components = Component::all();
+        return view('components.index');
+    }
 
-        return view('components.index', ['components' => $components]);
+    public function list(Request $request)
+    {
+        $type = $request->query()['type'];
+        $components = Component::where('type', $type)->get();
+
+        $targetView = 'components.' . $type . '.index';
+        return view($targetView, ['components' => $components]);
     }
 
     /**
@@ -35,7 +42,7 @@ class ComponentController extends Controller
 
         $data = ['sockets' => $sockets];
 
-        $targetView = 'components.types.create-' . $type;
+        $targetView = 'components.' . $type . '.create';
 
         return view($targetView, $data);
     }
@@ -63,7 +70,7 @@ class ComponentController extends Controller
 
         Component::create($data);
 
-        return redirect()->route('components.index');
+        return redirect()->route('components.list', ['type' => $type]);
     }
 
     /**

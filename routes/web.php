@@ -46,4 +46,4 @@ Route::resource('motherboards', MotherboardController::class)
 Route::resource('slots', ComponentMotherboardController::class)
     ->middleware('auth');
 
-Route::get('/component/chooseType', [ComponentController::class, 'chooseType'])->name('components.chooseType');
+Route::get('/component', [ComponentController::class, 'list'])->name('components.list');
