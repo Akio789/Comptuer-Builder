@@ -6,12 +6,12 @@
   <div class="d-flex justify-content-center">
       <div class="card">
           <div class="card-header">
-              <h3>Edit RAM</h3>
+              <h3>Edit CPU</h3>
               <div class="d-flex justify-content-end social_icon">
               </div>
           </div>
           <div class="card-body">
-          <form action="{{ route('components.update', ['component' => $component->id, 'type' => 'ram']) }}" method="POST">
+          <form action="{{ route('components.update', ['component' => $component->id, 'type' => 'cpu']) }}" method="POST">
               @csrf
               @method('PUT')
                   <div class="input-group form-group">
@@ -54,7 +54,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-microchip"></i></span>
                     </div>
-                    <input name="capacity" id="capacity" type="number" class="form-control" placeholder="memory (GB)" value="{{ $component->capacity }}">
+                    <input name="capacity" id="capacity" type="number" class="form-control" placeholder="Clock speed (GHz)" value="{{ $component->capacity }}">
                 </div>
                   <div class="form-group">
                       <input type="submit" value="Edit" class="btn float-right login_btn">

@@ -49,7 +49,7 @@
                         </button>
                     </p>
                 </form>
-                <a href="{{ route('components.edit', ['component' => $item->id]) }}"><p class="button-div">
+                <a href="{{ route('components.edit', ['component' => $item->id, 'type' => 'cpu']) }}"><p class="button-div">
                         <button type="button" class="btn btn-labeled btn-success" >
                             <span class="btn-label">
                                 <i class="fas fa-edit"></i>
