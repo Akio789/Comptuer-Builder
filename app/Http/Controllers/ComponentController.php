@@ -147,7 +147,7 @@ class ComponentController extends Controller
     {
         $component = Component::find($id);
         $component->delete();
-        return redirect()->route('components.index');
+        return redirect()->route('components.list', ['type' => $component->type]);
     }
 
     public function chooseType()
