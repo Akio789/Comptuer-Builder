@@ -20,7 +20,8 @@ class Component extends Model
         'model',
         'price',
         'type',
-        'capacity'
+        'ram_memory',
+        'cpu_clock_speed'
     ];
 
     public function computers()

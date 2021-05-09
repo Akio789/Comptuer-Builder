@@ -21,7 +21,8 @@ class CreateComponent extends Migration
             $table->string('brand');
             $table->string('model');
             $table->float('price');
-            $table->string('capacity');
+            $table->string('ram_memory')->nullable();
+            $table->string('cpu_clock_speed')->nullable();
             $table->timestamps();
         });
     }

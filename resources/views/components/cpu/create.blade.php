@@ -49,7 +49,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
 						</div>
-						<input name="capacity" id="capacity" type="text" class="form-control" placeholder="Clock speed (GHz)">
+						<input name="cpu_clock_speed" id="cpu_clock_speed" type="text" class="form-control" placeholder="Clock speed (GHz)">
 					</div>
                     <div class="form-group">
 						<input type="submit" value="Store" class="btn float-right login_btn">

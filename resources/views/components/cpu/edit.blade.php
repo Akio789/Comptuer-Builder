@@ -54,7 +54,7 @@
                     <div class="input-group-prepend">
                         <span class="input-group-text"><i class="fas fa-microchip"></i></span>
                     </div>
-                    <input name="capacity" id="capacity" type="number" class="form-control" placeholder="Clock speed (GHz)" value="{{ $component->capacity }}">
+                    <input name="capacity" id="capacity" type="number" class="form-control" placeholder="Clock speed (GHz)" value="{{ $component->cpu_clock_speed }}">
                 </div>
                   <div class="form-group">
                       <input type="submit" value="Edit" class="btn float-right login_btn">

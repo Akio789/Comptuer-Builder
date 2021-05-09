@@ -49,7 +49,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
 						</div>
-						<input name="capacity" id="capacity" type="number" class="form-control" placeholder="memory (GB)">
+						<input name="ram_memory" id="ram_memory" type="number" class="form-control" placeholder="memory (GB)">
 					</div>
                     <div class="form-group">
 						<input type="submit" value="Store" class="btn float-right login_btn">

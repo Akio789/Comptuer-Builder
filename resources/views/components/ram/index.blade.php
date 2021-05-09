@@ -33,7 +33,7 @@
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
             <td>{{ $item->model }}</td>
-            <td>{{ $item->capacity }} GB</td>
+            <td>{{ $item->ram_memory }} GB</td>
             <td>${{ $item->price }}</td>
             <td>
                 <div class="table-buttons">

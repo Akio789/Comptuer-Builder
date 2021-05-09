@@ -33,7 +33,7 @@
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
             <td>{{ $item->model }}</td>
-            <td>{{ $item->capacity }} GHz</td>
+            <td>{{ $item->cpu_clock_speed }} GHz</td>
             <td>${{ $item->price }}</td>
             <td>
                 <div class="table-buttons">
