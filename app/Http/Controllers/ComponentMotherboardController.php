@@ -31,9 +31,21 @@ class ComponentMotherboardController extends Controller
     {
         $motherboard = Motherboard::find($request->motherboard);
 
+        $currentComponentsAdded = ComponentMotherboard::where('motherboard_id', $motherboard->id)
+            ->whereNotNull('socket')
+            ->pluck('component_type')
+            ->toArray();
+
+        $remainingComponentsToAdd = [];
+        foreach (Constants::COMPONENT_TYPES as $key => $val) {
+            if (!in_array($val, $currentComponentsAdded)) {
+                array_push($remainingComponentsToAdd, $val);
+            }
+        }
+
         return view('motherboard.components.create', [
             'motherboard' => $motherboard,
-            'components' => Constants::COMPONENT_TYPES
+            'components' => $remainingComponentsToAdd
         ]);
     }
 

@@ -13,6 +13,7 @@
 			<div class="card-body">
             <form action="{{ route('slots.store', ['motherboard' => $motherboard->id]) }}" method="POST">
                 @csrf
+				<p>Only component types that have not been added are shown.</p>
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
@@ -20,7 +21,7 @@
 						<select name="component_type" id="component_type" class="form-control">
                             <option value="" selected disabled hidden>Select a component type</option>
                             @foreach ($components as $key => $val)
-                            <option value="{{ $key }}">{{ $val }}</option>
+                            <option value="{{ $val }}">{{ $val }}</option>
                             @endforeach
                         </select>
 					</div>
