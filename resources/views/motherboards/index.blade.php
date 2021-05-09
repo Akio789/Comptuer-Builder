@@ -36,6 +36,7 @@
             <td>${{ $item->price }}</td>
             <td>
                 @foreach ($item->slots as $slot)
+                    @if ($slot->quantity)
                     Type: {{ $slot->component_type }}
                     <br />
                     Quantity: {{ $slot->quantity }}
@@ -48,6 +49,7 @@
                         <button class="btn btn-labeled btn-success">Remove</button>
                     </form>
                     <hr />
+                    @endif
                 @endforeach
             </td>
             <td>

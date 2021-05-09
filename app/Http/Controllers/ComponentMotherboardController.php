@@ -53,10 +53,17 @@ class ComponentMotherboardController extends Controller
         $data = $request->input();
         $data['motherboard_id'] = $motherboard_id;
         $compMotherboard = ComponentMotherboard::create($data);
+        $sockets = Constants::SOCKETS[strtolower($data['component_type'])];
+
+        // CPU special case
+        if ($data['component_type'] == 'CPU') {
+            $motherboardSocket = Motherboard::find($motherboard_id)['socket'];
+            $sockets = [$motherboardSocket];
+        }
 
         return view('motherboard.components.create-step2', [
             'type' => $data['component_type'],
-            'sockets' => Constants::SOCKETS[strtolower($data['component_type'])],
+            'sockets' => $sockets,
             'id' => $compMotherboard->id
         ]);
     }
