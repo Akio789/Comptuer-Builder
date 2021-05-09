@@ -92,13 +92,17 @@ class ComponentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
+        $type = $request->query()['type'];
+        $sockets = Constants::SOCKETS[$type];
+
         $component = Component::find($id);
-        return view('components.edit', [
+
+        $targetView = 'components.' . $type . '.edit';
+        return view($targetView, [
             'component' => $component,
-            'types' => Constants::COMPONENT_TYPES,
-            'sockets' => Constants::SOCKET_TYPES
+            'sockets' => $sockets
         ]);
     }
 
@@ -111,10 +115,10 @@ class ComponentController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $type = $request->query()['type'];
         $component = Component::find($id);
 
         Validator::make($request->all(), [
-            'type' => 'required',
             'socket' => 'required',
             'name' => [
                 'required',
@@ -126,15 +130,9 @@ class ComponentController extends Controller
         ])->validate();
 
         $data = $request->input();
-        $component->type = $data['type'];
-        $component->socket = $data['socket'];
-        $component->name = $data['name'];
-        $component->brand = $data['brand'];
-        $component->model = $data['model'];
-        $component->price = $data['price'];
-        $component->save();
+        $component->update($data);
 
-        return redirect()->route('components.index');
+        return redirect()->route('components.list', ['type' => $type]);
     }
 
     /**

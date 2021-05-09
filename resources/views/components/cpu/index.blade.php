@@ -16,7 +16,6 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Type</th>
             <th>Socket</th>
             <th>Name</th>
             <th>Brand</th>
@@ -30,7 +29,6 @@
         @foreach ($components as $item)
         <tr>
             <td>{{ $item->id }}</td>
-            <td>{{ $item->type }}</td>
             <td>{{ $item->socket }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>

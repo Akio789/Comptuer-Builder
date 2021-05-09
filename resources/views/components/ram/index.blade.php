@@ -16,7 +16,6 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Type</th>
             <th>Socket</th>
             <th>Name</th>
             <th>Brand</th>
@@ -30,7 +29,6 @@
         @foreach ($components as $item)
         <tr>
             <td>{{ $item->id }}</td>
-            <td>{{ $item->type }}</td>
             <td>{{ $item->socket }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
@@ -51,7 +49,7 @@
                         </button>
                     </p>
                 </form>
-                <a href="{{ route('components.edit', ['component' => $item->id]) }}"><p class="button-div">
+                <a href="{{ route('components.edit', ['component' => $item->id, 'type' => 'ram']) }}"><p class="button-div">
                         <button type="button" class="btn btn-labeled btn-success" >
                             <span class="btn-label">
                                 <i class="fas fa-edit"></i>
