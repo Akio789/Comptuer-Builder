@@ -19,7 +19,8 @@ class Constants
 
     const SOCKETS = [
         'ram' => ['DDR3', 'DDR4'],
-        'cpu' => ['1200', '1155']
+        'cpu' => ['1200', '1155'],
+        'hdd' => ['PATA', 'SATA']
     ];
 
     const CAPACITY_PLACEHOLDERS = [
