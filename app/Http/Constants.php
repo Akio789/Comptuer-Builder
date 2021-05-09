@@ -19,7 +19,7 @@ class Constants
 
     const SOCKETS = [
         'ram' => ['DDR3', 'DDR4'],
-        'cpu' => ['Socket 1', 'Socket 2']
+        'cpu' => ['1200', '1200']
     ];
 
     const CAPACITY_PLACEHOLDERS = [
