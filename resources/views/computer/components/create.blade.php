@@ -15,7 +15,7 @@
 			
 			<h4>Socket: {{ $motherboard->socket }}</h4>
 			@foreach ($remainingSlots as $key => $val)
-			<h4>{{ $val }} {{ $key }} left</h4>		
+			<h4>{{ $val }} {{ $key }} {{ $mappedComponentSocket[$key] }} left</h4>		
 			@endforeach
             <form action="{{ route('computer.components.store', ['computer' => $computer->id]) }}" method="POST">
                 @csrf

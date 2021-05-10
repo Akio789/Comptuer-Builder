@@ -56,6 +56,7 @@ class ComponentComputerController extends Controller
         $computer = Computer::find($id);
         $motherboard = $computer->motherboard;
 
+        // Get the count of the each component type of the computer
         $currentComponents = $computer->components;
         $currentComponentsCount = [];
         foreach ($currentComponents as $c) {
@@ -64,33 +65,44 @@ class ComponentComputerController extends Controller
                 : 1;
         }
 
+        // How many slots are left per type of component
         $slots = ComponentMotherboard::where('motherboard_id', $motherboard->id)->get();
         $remainingSlots = [];
+        $mappedComponentSocket = []; // Helper to show component's socket in UI
         foreach ($slots as $slot) {
-            $remainingSlots[$slot->component_type . $slot->socket] = $slot->quantity;
-            if (array_key_exists($slot->component_type, $currentComponentsCount)) {
-                $remainingSlots[$slot->component_type] -= $currentComponentsCount[$slot->component_type];
+            $remainingSlots[$slot->component_type] = $slot->quantity;
+            $mappedComponentSocket[$slot->component_type] = $slot->socket;
+            if (array_key_exists(strtolower($slot->component_type), $currentComponentsCount)) {
+                $remainingSlots[$slot->component_type] -= $currentComponentsCount[strtolower($slot->component_type)];
             }
         }
 
-        $fittingComponents = Component::where('socket', $motherboard->socket)->get();
-
+        // The components that are allowed to be added depending on matching sockets and how many slots are left
         $remainingSlotsTypes = array_filter($remainingSlots, function ($val, $key) {
             return $val > 0;
         }, ARRAY_FILTER_USE_BOTH);
-
-        $availableComponents = [];
-        foreach ($fittingComponents as $component) {
-            if (array_key_exists($component->type, $remainingSlotsTypes)) {
-                array_push($availableComponents, $component);
+        $fittingComponents = [];
+        foreach ($slots as $slot) {
+            $availableComponentsOfType = Component::where('type', $slot->component_type)
+                ->where('socket', $slot->socket)
+                ->get();
+            foreach ($availableComponentsOfType as $c) {
+                array_push($fittingComponents, $c);
             }
         }
 
+        $availableComponents = [];
+        foreach ($fittingComponents as $component) {
+            if (array_key_exists(strtoupper($component->type), $remainingSlotsTypes)) {
+                array_push($availableComponents, $component);
+            }
+        }
         return view('computer.components.create', [
             'computer' => $computer,
             'motherboard' => $motherboard,
             'availableComponents' => $availableComponents,
-            'remainingSlots' => $remainingSlots
+            'remainingSlots' => $remainingSlots,
+            'mappedComponentSocket' => $mappedComponentSocket
         ]);
     }
 
