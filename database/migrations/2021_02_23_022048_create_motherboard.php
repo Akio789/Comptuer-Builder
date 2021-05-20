@@ -20,7 +20,7 @@ class CreateMotherboard extends Migration
             $table->string('brand');
             $table->string('model');
             $table->float('price');
-            $table->string('socket')->default(Constants::SOCKET_TYPES['1200']);
+            $table->string('socket')->default(Constants::SOCKET_TYPES[0]);
             $table->timestamps();
         });
     }

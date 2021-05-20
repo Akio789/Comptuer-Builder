@@ -19,14 +19,20 @@ class CreateComponent extends Migration
 
             /**
              * CPU: Chipset
+             * RAM: Type
              */
             $table->string('socket');
+
+            /**
+             * CPU: Frequency/Clock speed
+             * RAM: Memory (GB)
+             */
+            $table->string('capacity');
 
             $table->string('name');
             $table->string('brand');
             $table->string('model');
             $table->float('price');
-            $table->string('capacity');
             $table->timestamps();
 
             /**
@@ -34,6 +40,11 @@ class CreateComponent extends Migration
              */
             $table->integer('cores')->nullable();
             $table->string('frequency_boost')->nullable();
+
+            /**
+             * RAM extra fields
+             */
+            $table->string('speed')->nullable();
         });
     }
 

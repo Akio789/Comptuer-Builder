@@ -20,6 +20,7 @@
             <th>Name</th>
             <th>Brand</th>
             <th>Model</th>
+            <th>Speed</th>
             <th>Memory</th>
             <th>Price</th>
             <th>Options</th>
@@ -33,6 +34,7 @@
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
             <td>{{ $item->model }}</td>
+            <td>{{ $item->speed }}</td>
             <td>{{ $item->capacity }} GB</td>
             <td>${{ $item->price }}</td>
             <td>

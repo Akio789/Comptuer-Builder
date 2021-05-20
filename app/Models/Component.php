@@ -23,7 +23,9 @@ class Component extends Model
         'capacity',
         // CPU
         'cores',
-        'frequency_boost'
+        'frequency_boost',
+        // RAM
+        'speed'
     ];
 
     public function computers()
