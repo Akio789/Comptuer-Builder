@@ -20,7 +20,10 @@ class Component extends Model
         'model',
         'price',
         'type',
-        'capacity'
+        'capacity',
+        // CPU
+        'cores',
+        'frequency_boost'
     ];
 
     public function computers()

@@ -15,7 +15,7 @@
                 @csrf
 				<div class="input-group form-group">
 					<select name="socket" id="socket" class="form-control">
-						<option value="" selected disabled hidden>Select a socket</option>
+						<option value="" selected disabled hidden>Select a chipset</option>
 						@foreach ($sockets as $socket)
 						<option value="{{ $socket }}">{{ $socket }}</option>
 						@endforeach
@@ -50,6 +50,18 @@
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
 						</div>
 						<input name="capacity" id="capacity" type="text" class="form-control" placeholder="Clock speed (GHz)">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+						</div>
+						<input name="cores" id="cores" type="number" class="form-control" placeholder="# of cores">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
+						</div>
+						<input name="frequency_boost" id="frequency_boost" type="text" class="form-control" placeholder="Frequency boost">
 					</div>
                     <div class="form-group">
 						<input type="submit" value="Store" class="btn float-right login_btn">

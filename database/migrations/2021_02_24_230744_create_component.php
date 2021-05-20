@@ -16,13 +16,24 @@ class CreateComponent extends Migration
         Schema::create('components', function (Blueprint $table) {
             $table->id();
             $table->string('type');
+
+            /**
+             * CPU: Chipset
+             */
             $table->string('socket');
+
             $table->string('name');
             $table->string('brand');
             $table->string('model');
             $table->float('price');
             $table->string('capacity');
             $table->timestamps();
+
+            /**
+             * CPU extra fields
+             */
+            $table->integer('cores')->nullable();
+            $table->string('frequency_boost')->nullable();
         });
     }
 

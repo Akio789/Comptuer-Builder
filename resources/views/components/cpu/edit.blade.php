@@ -16,7 +16,7 @@
               @method('PUT')
                   <div class="input-group form-group">
                       <select name="socket" id="socket" class="form-control">
-                          <option value="" disabled hidden>Select a socket type</option>
+                          <option value="" disabled hidden>Select a chipset</option>
                           @foreach ($sockets as $socket)
                           @if ($component->socket == $socket)
                               <option value="{{ $socket }}" selected>{{ $socket }}</option>
@@ -55,6 +55,18 @@
                         <span class="input-group-text"><i class="fas fa-microchip"></i></span>
                     </div>
                     <input name="capacity" id="capacity" type="number" class="form-control" placeholder="Clock speed (GHz)" value="{{ $component->capacity }}">
+                </div>
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
+                    </div>
+                    <input name="cores" id="cores" type="number" class="form-control" placeholder="# of cores" value="{{ $component->cores }}">
+                </div>
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-microchip"></i></span>
+                    </div>
+                    <input name="frequency_boost" id="frequency_boost" type="text" class="form-control" placeholder="Frequency boost" value="{{ $component->frequency_boost }}">
                 </div>
                   <div class="form-group">
                       <input type="submit" value="Edit" class="btn float-right login_btn">

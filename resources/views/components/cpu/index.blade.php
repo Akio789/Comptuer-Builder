@@ -16,12 +16,14 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Socket</th>
+            <th>Chipset</th>
             <th>Name</th>
             <th>Brand</th>
             <th>Model</th>
-            <th>Clock speed</th>
+            <th>Frequency</th>
             <th>Price</th>
+            <th>Cores</th>
+            <th>Frequency boost</th>
             <th>Options</th>
         </tr>
     </thead>
@@ -35,6 +37,8 @@
             <td>{{ $item->model }}</td>
             <td>{{ $item->capacity }} GHz</td>
             <td>${{ $item->price }}</td>
+            <td>{{ $item->cores }}</td>
+            <td>{{ $item->frequency_boost }}</td>
             <td>
                 <div class="table-buttons">
                 <form action="{{ route('components.destroy', ['component' => $item->id]) }}" method="POST">

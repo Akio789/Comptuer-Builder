@@ -13,13 +13,40 @@ class Constants
     ];
 
     const SOCKET_TYPES = [
-        '1200' => '1200',
-        '1155' => '1155'
+        'LGA2066',
+        'LGA2011-v3' => 'LGA2011-v3',
+        'LGA2011' => 'LGA2011',
+        'LGA1200' => 'LGA1200',
+        'LGA1151' => 'LGA1151',
+        'LGA1150' => 'LGA1150',
+        'LGA1156' => 'LGA1156',
+        'AM4' => 'AM4',
+        'AM3+' => 'AM3+',
+        'AM3' => 'AM3',
+        'AM2+' => 'AM2+',
+        'AM2' => 'AM2',
+        'FM2' => 'FM2',
+        'FM1' => 'FM1'
     ];
 
     const SOCKETS = [
         'ram' => ['DDR3', 'DDR4'],
-        'cpu' => ['1200', '1155'],
+        'cpu' => [
+            'LGA2066',
+            'LGA2011-v3',
+            'LGA2011',
+            'LGA1200',
+            'LGA1151',
+            'LGA1150',
+            'LGA1156',
+            'AM4',
+            'AM3+',
+            'AM3',
+            'AM2+',
+            'AM2',
+            'FM2',
+            'FM1'
+        ],
         'hdd' => ['PATA', 'SATA']
     ];
 
