@@ -51,6 +51,18 @@
 						</div>
 						<input name="capacity" id="capacity" type="number" class="form-control" placeholder="space (GB)">
 					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
+						</div>
+						<input name="cache" id="cache" type="text" class="form-control" placeholder="cache">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-barcode"></i></span>
+						</div>
+						<input name="interface" id="interface" type="text" class="form-control" placeholder="interface">
+					</div>
                     <div class="form-group">
 						<input type="submit" value="Store" class="btn float-right login_btn">
 					</div>

@@ -26,6 +26,7 @@ class CreateComponent extends Migration
             /**
              * CPU: Frequency/Clock speed
              * RAM: Memory (GB)
+             * SSD: Storage (GB)
              */
             $table->string('capacity');
 
@@ -45,6 +46,12 @@ class CreateComponent extends Migration
              * RAM extra fields
              */
             $table->string('speed')->nullable();
+
+            /**
+             * SSD and HDD extra fields
+             */
+            $table->string('cache')->nullable();
+            $table->string('interface')->nullable();
         });
     }
 

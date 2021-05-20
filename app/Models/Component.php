@@ -25,7 +25,10 @@ class Component extends Model
         'cores',
         'frequency_boost',
         // RAM
-        'speed'
+        'speed',
+        // SDD and HDD
+        'cache',
+        'interface'
     ];
 
     public function computers()

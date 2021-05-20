@@ -47,7 +47,8 @@ class Constants
             'FM2',
             'FM1'
         ],
-        'hdd' => ['PATA', 'SATA']
+        'ssd' => ['b-key', 'M2'],
+        'hdd' => ['SATA 3']
     ];
 
     const CAPACITY_PLACEHOLDERS = [
