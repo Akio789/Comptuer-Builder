@@ -28,7 +28,7 @@ class MotherboardController extends Controller
      */
     public function create()
     {
-        return view('motherboards.create', ['types' => Constants::SOCKET_TYPES]);
+        return view('motherboards.create', ['types' => Constants::SOCKET_TYPES, 'sizes' => Constants::MOTHERBOARD_SIZES]);
     }
 
     /**

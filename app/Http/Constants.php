@@ -13,6 +13,13 @@ class Constants
         'COOLER' => 'COOLER'
     ];
 
+    const MOTHERBOARD_SIZES = [
+        'Mini itx',
+        'micro-atx',
+        'atx',
+        'e-atx'
+    ];
+
     const SOCKET_TYPES = [
         'LGA2066',
         'LGA2011-v3' => 'LGA2011-v3',

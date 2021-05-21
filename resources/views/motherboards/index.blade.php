@@ -17,9 +17,11 @@
         <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Size</th>
             <th>Socket</th>
             <th>Brand</th>
             <th>Price</th>
+            <th>Max Memory</th>
             <th>Slots</th>
             <th>Options</th>
         </tr>
@@ -29,9 +31,11 @@
         <tr>
             <td>{{ $item->id }}</td>
             <td>{{ $item->name }}</td>
+            <td>{{ $item->size }}</td>
             <td>{{ $item->socket }}</td>
             <td>{{ $item->brand }}</td>
             <td>${{ $item->price }}</td>
+            <td>{{ $item->max_memory }}</td>
             <td>
                 @foreach ($item->slots as $slot)
                     @if ($slot->quantity)
@@ -51,7 +55,7 @@
                 @endforeach
             </td>
             <td>
-                <div class="table-buttons">
+                <div class="table-buttons ml-3">
                 <a href="{{ route('slots.create', ['motherboard' => $item->id]) }}"><p class="button-div">
                     <button type="button" class="btn btn-labeled btn-success" >
                         <span class="btn-label">

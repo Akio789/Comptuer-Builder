@@ -4,7 +4,7 @@
 @section('content')
 <div class="container">
 	<div class="d-flex justify-content-center">
-		<div class="card">
+		<div class="card h-100">
 			<div class="card-header">
 				<h3>Create new motherboard</h3>
 				<div class="d-flex justify-content-end social_icon">
@@ -18,6 +18,14 @@
 						<option value="" selected disabled hidden>Select a socket type</option>
 						@foreach ($types as $type)
 						<option value="{{ $type }}">{{ $type }}</option>
+						@endforeach
+					</select>
+				</div>
+				<div class="input-group form-group">
+					<select name="size" id="size" class="form-control">
+						<option value="" selected disabled hidden>Select a size</option>
+						@foreach ($sizes as $size)
+						<option value="{{ $size }}">{{ $size }}</option>
 						@endforeach
 					</select>
 				</div>
@@ -38,6 +46,12 @@
 							<span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
 						</div>
 						<input name="price" id="price" type="number" class="form-control" placeholder="price">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-barcode"></i></span>
+						</div>
+						<input name="max_memory" id="max_memory" type="text" class="form-control" placeholder="max_memory">
 					</div>
                     <div class="form-group">
 						<input type="submit" value="Store" class="btn float-right login_btn">

@@ -18,8 +18,10 @@ class CreateMotherboard extends Migration
             $table->id();
             $table->string('name');
             $table->string('brand');
+            $table->string('max_memory');
             $table->float('price');
             $table->string('socket')->default(Constants::SOCKET_TYPES[0]);
+            $table->string('size')->default(Constants::MOTHERBOARD_SIZES[0]);
             $table->timestamps();
         });
     }

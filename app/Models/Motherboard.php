@@ -15,7 +15,9 @@ class Motherboard extends Model
         'name',
         'brand',
         'price',
-        'socket'
+        'socket',
+        'size',
+        'max_memory'
     ];
 
     public function computers()
