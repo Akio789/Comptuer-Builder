@@ -4,7 +4,7 @@
 
 <div class="container">
   <div class="d-flex justify-content-center">
-      <div class="card">
+      <div class="card h-100">
           <div class="card-header">
               <h3>Edit CPU</h3>
               <div class="d-flex justify-content-end social_icon">
