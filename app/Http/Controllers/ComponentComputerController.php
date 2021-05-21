@@ -91,6 +91,14 @@ class ComponentComputerController extends Controller
             }
         }
 
+        // Make all upper case just for convenience
+        foreach ($remainingSlotsTypes as $key => $value) {
+            if (strtoupper($key) != $key) {
+                $remainingSlotsTypes[strtoupper($key)] = $value;
+                unset($remainingSlotsTypes[$key]);
+            }
+        }
+
         $availableComponents = [];
         foreach ($fittingComponents as $component) {
             if (array_key_exists(strtoupper($component->type), $remainingSlotsTypes)) {

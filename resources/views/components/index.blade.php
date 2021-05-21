@@ -24,6 +24,11 @@
 				SSD
 			</button>
 		</a>
+		<a href="{{ route('components.list', ['type' =>  'cooler']) }}">
+			<button type="button" class="m-2 btn btn-centered btn-labeled btn-success btn-info" >
+				Cooler
+			</button>
+		</a>
 	</div>
 </div>
 @endsection

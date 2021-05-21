@@ -20,13 +20,19 @@ class CreateComponent extends Migration
             /**
              * CPU: Chipset
              * RAM: Type
+             * SSD: Socket
+             * HDD: Socket
+             * Cooler: Socket
              */
             $table->string('socket');
 
             /**
+             * What capacity means for every component type
+             * 
              * CPU: Frequency/Clock speed
              * RAM: Memory (GB)
              * SSD: Storage (GB)
+             * Cooler: Fans RPM
              */
             $table->string('capacity');
 
@@ -52,6 +58,13 @@ class CreateComponent extends Migration
              */
             $table->string('cache')->nullable();
             $table->string('interface')->nullable();
+
+            /**
+             * Cooler extra fields
+             */
+            $table->string('noise')->nullable();
+            $table->string('size')->nullable();
+            $table->string('radiator')->nullable();
         });
     }
 

@@ -28,7 +28,11 @@ class Component extends Model
         'speed',
         // SDD and HDD
         'cache',
-        'interface'
+        'interface',
+        // Cooler
+        'noise',
+        'size',
+        'radiator'
     ];
 
     public function computers()

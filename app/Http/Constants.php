@@ -9,7 +9,8 @@ class Constants
         'CPU' => 'CPU',
         'GPU' => 'GPU',
         'SSD' => 'SSD',
-        'HDD' => 'HDD'
+        'HDD' => 'HDD',
+        'COOLER' => 'COOLER'
     ];
 
     const SOCKET_TYPES = [
@@ -39,6 +40,24 @@ class Constants
             'LGA1151',
             'LGA1150',
             'LGA1156',
+            'LGA1155',
+            'AM4',
+            'AM3+',
+            'AM3',
+            'AM2+',
+            'AM2',
+            'FM2',
+            'FM1'
+        ],
+        'cooler' => [
+            'LGA2066',
+            'LGA2011-v3',
+            'LGA2011',
+            'LGA1200',
+            'LGA1151',
+            'LGA1150',
+            'LGA1156',
+            'LGA1155',
             'AM4',
             'AM3+',
             'AM3',
@@ -49,12 +68,5 @@ class Constants
         ],
         'ssd' => ['b-key', 'M2'],
         'hdd' => ['SATA 3']
-    ];
-
-    const CAPACITY_PLACEHOLDERS = [
-        'ram' => [
-            'type' => 'number',
-            'placeholder' => '8 GB'
-        ]
     ];
 }
