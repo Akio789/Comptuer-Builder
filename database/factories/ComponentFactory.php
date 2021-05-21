@@ -25,7 +25,6 @@ class ComponentFactory extends Factory
             'name' => $this->faker->name(),
             'socket' => $this->faker->randomNumber(),
             'brand' => $this->faker->name(),
-            'model' => $this->faker->name(),
             'price' => $this->faker->numberBetween(1, 100),
             'type' => $this->faker->name()
         ];

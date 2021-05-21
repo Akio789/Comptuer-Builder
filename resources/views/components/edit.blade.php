@@ -52,12 +52,6 @@
 					</div>
                     <div class="input-group form-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-barcode"></i></span>
-						</div>
-						<input name="model" id="model" type="text" class="form-control" placeholder="model" value="{{ $component->model }}">
-					</div>
-                    <div class="input-group form-group">
-						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-dollar-sign"></i></span>
 						</div>
 						<input name="price" id="price" type="number" class="form-control" placeholder="price" value="{{ $component->price }}">

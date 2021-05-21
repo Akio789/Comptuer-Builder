@@ -38,7 +38,6 @@ class CreateComponent extends Migration
 
             $table->string('name');
             $table->string('brand');
-            $table->string('model');
             $table->float('price');
             $table->timestamps();
 

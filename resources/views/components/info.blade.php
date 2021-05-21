@@ -4,7 +4,6 @@
 <h1>Detail of {{ $component->name }}</h1>
 <p>Name: {{ $component->name }}</p>
 <p>Brand: {{ $component->brand }}</p>
-<p>Model: {{ $component->model }}</p>
 <p>Price: ${{ $component->price }}</p>
 
 <a href="{{ route('components.index') }}">Go Back</a>

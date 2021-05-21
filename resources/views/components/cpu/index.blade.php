@@ -19,7 +19,6 @@
             <th>Chipset</th>
             <th>Name</th>
             <th>Brand</th>
-            <th>Model</th>
             <th>Frequency</th>
             <th>Price</th>
             <th>Cores</th>
@@ -34,7 +33,6 @@
             <td>{{ $item->socket }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
-            <td>{{ $item->model }}</td>
             <td>{{ $item->capacity }} GHz</td>
             <td>${{ $item->price }}</td>
             <td>{{ $item->cores }}</td>

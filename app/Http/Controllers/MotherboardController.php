@@ -45,7 +45,6 @@ class MotherboardController extends Controller
             'socket' => 'required',
             'name' => 'required|unique:motherboards',
             'brand' => 'required',
-            'model' => 'required',
             'price' => 'required',
         ])->validate();
 

@@ -19,7 +19,6 @@
             <th>Socket</th>
             <th>Name</th>
             <th>Brand</th>
-            <th>Model</th>
             <th>RPM</th>
             <th>Price</th>
             <th>Noise</th>
@@ -35,7 +34,6 @@
             <td>{{ $item->socket }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
-            <td>{{ $item->model }}</td>
             <td>{{ $item->capacity }}</td>
             <td>${{ $item->price }}</td>
             <td>{{ $item->noise }}</td>

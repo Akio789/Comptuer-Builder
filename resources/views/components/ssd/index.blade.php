@@ -19,7 +19,6 @@
             <th>Socket</th>
             <th>Name</th>
             <th>Brand</th>
-            <th>Model</th>
             <th>Cache</th>
             <th>Interface</th>
             <th>Space</th>
@@ -34,7 +33,6 @@
             <td>{{ $item->socket }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
-            <td>{{ $item->model }}</td>
             <td>{{ $item->cache }}</td>
             <td>{{ $item->interface }}</td>
             <td>{{ $item->capacity }} GB</td>

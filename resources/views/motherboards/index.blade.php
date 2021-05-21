@@ -19,7 +19,6 @@
             <th>Name</th>
             <th>Socket</th>
             <th>Brand</th>
-            <th>Model</th>
             <th>Price</th>
             <th>Slots</th>
             <th>Options</th>
@@ -32,7 +31,6 @@
             <td>{{ $item->name }}</td>
             <td>{{ $item->socket }}</td>
             <td>{{ $item->brand }}</td>
-            <td>{{ $item->model }}</td>
             <td>${{ $item->price }}</td>
             <td>
                 @foreach ($item->slots as $slot)

@@ -5,7 +5,6 @@
 @foreach ($components as $component)
     <p>Name: {{ $component->name }}</p>
     <p>Brand: {{ $component->brand }}</p>
-    <p>Model: {{ $component->model }}</p>
     <p>Price: ${{ $component->price }}</p>
     <form action="{{ route('computer.components.update', ['computer' => $computer->id, 'component' => $component->id]) }}" method="POST">
         @csrf

@@ -25,7 +25,6 @@ class MotherboardFactory extends Factory
             'name' => $this->faker->name,
             'brand' => $this->faker->name,
             'price' => $this->faker->numberBetween(1, 100),
-            'model' => $this->faker->name,
             'socket' => $this->faker->numberBetween(1000, 2000),
         ];
     }

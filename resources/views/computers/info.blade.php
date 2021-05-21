@@ -10,7 +10,6 @@
 @foreach ($computer->components as $component)
     <p>{{ $component->name }}</p>
     <p>{{ $component->brand }}</p>
-    <p>{{ $component->model }}</p>
     <p>${{ $component->price }}</p>
     <hr />
 @endforeach

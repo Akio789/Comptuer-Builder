@@ -64,7 +64,6 @@ class ComponentController extends Controller
             'socket' => 'required',
             'name' => 'required|unique:components',
             'brand' => 'required',
-            'model' => 'required',
             'price' => 'required',
         ])->validate();
 
@@ -125,7 +124,6 @@ class ComponentController extends Controller
                 Rule::unique('components')->ignore($component->id)
             ],
             'brand' => 'required',
-            'model' => 'required',
             'price' => 'required'
         ])->validate();
 

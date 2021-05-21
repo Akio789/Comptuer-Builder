@@ -17,7 +17,6 @@ class Component extends Model
         'name',
         'socket',
         'brand',
-        'model',
         'price',
         'type',
         'capacity',

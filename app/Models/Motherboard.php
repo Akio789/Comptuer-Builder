@@ -14,7 +14,6 @@ class Motherboard extends Model
     protected $fillable = [
         'name',
         'brand',
-        'model',
         'price',
         'socket'
     ];
