@@ -1,14 +1,14 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="title-banner"><h2>List of Coolers</h2></div>
-<a href="{{ route('components.create', ['type' =>  'cooler']) }}">
+<div class="title-banner"><h2>List of GPUs</h2></div>
+<a href="{{ route('components.create', ['type' =>  'gpu']) }}">
     <p class="button-div">
     <button type="button" class="btn btn-labeled btn-success" >
         <span class="btn-label">
             <i class="fas fa-plus"></i>
         </span>
-        New Cooler
+        New GPU
     </button>
     </p>
 </a>
@@ -19,11 +19,11 @@
             <th>Socket</th>
             <th>Name</th>
             <th>Brand</th>
-            <th>RPM</th>
-            <th>Price</th>
-            <th>Noise</th>
+            <th>Core frequency</th>
+            <th>Core boost</th>
             <th>Size</th>
-            <th>Radiator</th>
+            <th>Memory</th>
+            <th>Price</th>
             <th>Options</th>
         </tr>
     </thead>
@@ -34,11 +34,11 @@
             <td>{{ $item->socket }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
-            <td>{{ $item->capacity }}</td>
+            <td>{{ $item->core_frequency }}</td>
+            <td>{{ $item->core_boost }}</td>
+            <td>{{ $item->gpu_size }}</td>
+            <td>{{ $item->capacity }} GB</td>
             <td>${{ $item->price }}</td>
-            <td>{{ $item->noise }}</td>
-            <td>{{ $item->cooler_size }}</td>
-            <td>{{ $item->radiator }}</td>
             <td>
                 <div class="table-buttons">
                 <form action="{{ route('components.destroy', ['component' => $item->id]) }}" method="POST">
@@ -53,7 +53,7 @@
                         </button>
                     </p>
                 </form>
-                <a href="{{ route('components.edit', ['component' => $item->id, 'type' => 'cooler']) }}"><p class="button-div">
+                <a href="{{ route('components.edit', ['component' => $item->id, 'type' => 'gpu']) }}"><p class="button-div">
                         <button type="button" class="btn btn-labeled btn-success" >
                             <span class="btn-label">
                                 <i class="fas fa-edit"></i>

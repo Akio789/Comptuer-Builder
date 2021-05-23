@@ -74,6 +74,13 @@ class Constants
             'FM1'
         ],
         'ssd' => ['b-key', 'M2'],
-        'hdd' => ['SATA 3']
+        'hdd' => ['SATA 3'],
+        'gpu' => [
+            'PCIex1',
+            'PCIex4',
+            'PCIex8',
+            'PCIex16',
+            'PCI'
+        ]
     ];
 }

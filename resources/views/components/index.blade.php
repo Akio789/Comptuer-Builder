@@ -29,6 +29,11 @@
 				Cooler
 			</button>
 		</a>
+		<a href="{{ route('components.list', ['type' =>  'gpu']) }}">
+			<button type="button" class="m-2 btn btn-centered btn-labeled btn-success btn-info" >
+				GPU
+			</button>
+		</a>
 	</div>
 </div>
 @endsection

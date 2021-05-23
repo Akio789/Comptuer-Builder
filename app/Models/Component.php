@@ -30,8 +30,12 @@ class Component extends Model
         'interface',
         // Cooler
         'noise',
-        'size',
-        'radiator'
+        'cooler_size',
+        'radiator',
+        // GPU
+        'core_frequency',
+        'core_boost',
+        'gpu_size'
     ];
 
     public function computers()
