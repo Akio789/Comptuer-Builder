@@ -25,6 +25,7 @@ class CreateComponent extends Migration
              * Cooler: Socket
              * GPU: Chipset
              * Cabinet: Size
+             * Power supply: Size
              */
             $table->string('socket');
 
@@ -37,6 +38,7 @@ class CreateComponent extends Migration
              * Cooler: Fans RPM
              * GPU: Memory
              * Cabinet: DOESNT NEED IT
+             * Power supply: Watts
              */
             $table->string('capacity')->nullable();
 
@@ -80,6 +82,12 @@ class CreateComponent extends Migration
              * Cabinet extra fields
              */
             // NONE
+
+            /**
+             * Power supply extra fields
+             */
+            $table->string('certification')->nullable();
+            $table->string('power_supply_type')->nullable();
         });
     }
 

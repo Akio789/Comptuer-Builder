@@ -35,7 +35,11 @@ class Component extends Model
         // GPU
         'core_frequency',
         'core_boost',
-        'gpu_size'
+        'gpu_size',
+        // Power supply
+        'power_supply',
+        'certification',
+        'power_supply_type'
     ];
 
     public function computers()

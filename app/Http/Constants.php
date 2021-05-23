@@ -12,6 +12,7 @@ class Constants
         'HDD' => 'HDD',
         'COOLER' => 'COOLER',
         'CABINET' => 'CABINET',
+        'POWER_SUPPLY' => 'POWER_SUPPLY',
     ];
 
     const MOTHERBOARD_SIZES = [
@@ -88,6 +89,10 @@ class Constants
             'micro-atx',
             'atx',
             'e-atx'
+        ],
+        'power_supply' => [
+            'ATX',
+            'SFX'
         ]
     ];
 }
