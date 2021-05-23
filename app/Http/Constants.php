@@ -23,7 +23,7 @@ class Constants
     ];
 
     const SOCKET_TYPES = [
-        'LGA2066',
+        'LGA2066' => 'LGA2066',
         'LGA2011-v3' => 'LGA2011-v3',
         'LGA2011' => 'LGA2011',
         'LGA1200' => 'LGA1200',
