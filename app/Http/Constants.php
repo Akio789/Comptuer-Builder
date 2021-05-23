@@ -10,7 +10,8 @@ class Constants
         'GPU' => 'GPU',
         'SSD' => 'SSD',
         'HDD' => 'HDD',
-        'COOLER' => 'COOLER'
+        'COOLER' => 'COOLER',
+        'CABINET' => 'CABINET',
     ];
 
     const MOTHERBOARD_SIZES = [
@@ -81,6 +82,12 @@ class Constants
             'PCIex8',
             'PCIex16',
             'PCI'
+        ],
+        'cabinet' => [
+            'Mini itx',
+            'micro-atx',
+            'atx',
+            'e-atx'
         ]
     ];
 }

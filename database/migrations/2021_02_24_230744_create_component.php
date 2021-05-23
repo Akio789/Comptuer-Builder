@@ -24,6 +24,7 @@ class CreateComponent extends Migration
              * HDD: Socket
              * Cooler: Socket
              * GPU: Chipset
+             * Cabinet: Size
              */
             $table->string('socket');
 
@@ -35,8 +36,9 @@ class CreateComponent extends Migration
              * SSD: Storage (GB)
              * Cooler: Fans RPM
              * GPU: Memory
+             * Cabinet: DOESNT NEED IT
              */
-            $table->string('capacity');
+            $table->string('capacity')->nullable();
 
             $table->string('name');
             $table->string('brand');
@@ -73,6 +75,11 @@ class CreateComponent extends Migration
             $table->string('core_frequency')->nullable();
             $table->string('core_boost')->nullable();
             $table->string('gpu_size')->nullable();
+
+            /**
+             * Cabinet extra fields
+             */
+            // NONE
         });
     }
 

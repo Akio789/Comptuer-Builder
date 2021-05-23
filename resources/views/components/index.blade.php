@@ -34,6 +34,11 @@
 				GPU
 			</button>
 		</a>
+		<a href="{{ route('components.list', ['type' =>  'cabinet']) }}">
+			<button type="button" class="m-2 btn btn-centered btn-labeled btn-success btn-info" >
+				Cabinet
+			</button>
+		</a>
 	</div>
 </div>
 @endsection
