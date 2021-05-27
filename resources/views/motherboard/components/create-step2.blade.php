@@ -24,10 +24,10 @@
 								</select>
 								@break
 							@default
-								<select name="socket" id="socket" class="form-control">
+								<select name="socket" id="socket" class="form-control" dusk="select">
 									<option value="" selected disabled hidden>Select a socket type</option>
 									@foreach ($sockets as $key => $val)
-										<option value="{{ $val }}">{{ $val }}</option>
+										<option dusk="{{ $val }}" value="{{ $val }}">{{ $val }}</option>
 									@endforeach
 								</select>
 						@endswitch

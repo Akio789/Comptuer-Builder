@@ -19,12 +19,14 @@ class ComponentsTest extends DuskTestCase
     {
         $this->browse(function ($browser) {
             $browser->loginAs(User::find(1))
-                  ->visit('/computers')
-                    ->click('@AddC',10)
-                    ->click('@comp')
-                    ->click('@1')
-                    ->press('add')
-                    ->assertPathIs('/computers');
+                  ->visit('/slots/create?motherboard=1')
+                    ->click('@slotType')
+                    ->click('@RAM')
+                    ->press('Continue',10)
+                    ->click('@select')
+                    ->click('@DDR3')
+                    ->press('Save',10)
+                    ->assertPathIs('/motherboards');
         });
     }
 }

@@ -18,10 +18,10 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
 						</div>
-						<select name="component_type" id="component_type" class="form-control">
+						<select name="component_type" id="component_type" class="form-control" dusk='slotType'>
                             <option value="" selected disabled hidden>Select a component type</option>
                             @foreach ($components as $key => $val)
-                            <option value="{{ $val }}">{{ $val }}</option>
+                            <option dusk="{{ $val }}" value="{{ $val }}">{{ $val }}</option>
                             @endforeach
                         </select>
 					</div>
