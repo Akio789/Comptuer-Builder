@@ -18,6 +18,7 @@
             <form action="{{ route('computer.components.store', ['computer' => $computer->id]) }}" method="POST">
                 @csrf
 				@foreach ($remainingSlots as $key => $val)
+				@if($val > 0)
 				<div class="component-list">
 					<h5>{{ $key }}</h5>
 					@for ($i = 0; $i < $val; $i++)	
@@ -41,6 +42,7 @@
 						</div>
 					@endfor
 				</div>
+				@endif
 				@endforeach
                     <div class="form-group">
 						<input type="submit" value="Save" class="btn float-right login_btn">

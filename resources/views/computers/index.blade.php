@@ -29,11 +29,12 @@
             <td>{{ $item->name }}</td>
             <td>
                 <div class="component">
-                    <p>Mohterboard: {{ $item->motherboard ? $item->motherboard->name : 'No motherboard' }}</p>
+                    <p>Motherboard: {{ $item->motherboard ? $item->motherboard->name : 'No motherboard' }}</p>
                 </div>
                 @foreach ($item->components as $component)
                 <div class="component">
-                    <p>{{ $component->name }}</p>
+                    <p>{{ucfirst(trans($component->type))}} : {{ $component->name }} </p>
+                    <p> &nbsp; $ {{ number_format($component->price,0,'.',',') }}</p>
                     <form action="{{ route('computer.components.destroy', ['computer' => $item->id, 'component' => $component->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
