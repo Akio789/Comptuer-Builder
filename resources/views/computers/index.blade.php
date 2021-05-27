@@ -2,12 +2,9 @@
 
 @section('content')
 <div class="title-banner"><h2 >List of computers</h2></div>
-<a href="{{ route('computers.create') }}">
+<a href="{{ route('computers.create') }}"  >
     <p class="button-div">
-    <button type="button" class="btn btn-labeled btn-success" >
-        <span class="btn-label">
-            <i class="fas fa-plus"></i>
-        </span>
+    <button type="button" class="btn btn-labeled btn-success" dusk="NC">
         New Computer
     </button>
     </p>
@@ -92,7 +89,7 @@
                     </a>-->
                     <a href="{{ route('computer.components.create', ['computer' => $item->id]) }}">
                         <p class="button-div">
-                        <button type="button" class="btn btn-labeled btn-success" >
+                        <button type="button" class="btn btn-labeled btn-success" dusk="AddC" >
                             <span class="btn-label">
                                 <i class="fas fa-plus"></i>
                             </span>

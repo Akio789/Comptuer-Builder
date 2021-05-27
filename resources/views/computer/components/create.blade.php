@@ -23,10 +23,10 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
 						</div>
-						<select name="component" id="component" class="form-control">
+						<select dusk="comp" name="component" id="component" class="form-control">
                             <option value="" selected disabled hidden>Select a component</option>
                             @foreach ($availableComponents as $component)
-                            <option value="{{ $component->id }}">{{ $component->name }}</option>
+                            <option dusk="{{ $component->id }}" value="{{ $component->id }}">{{ $component->name }}</option>
                             @endforeach
                         </select>
                         
