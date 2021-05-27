@@ -26,9 +26,15 @@
 								<span class="input-group-text"><i class="fas fa-microchip"></i></span>
 							</div>
 							<select name="component" id="component" class="form-control">
-								<option value="" selected disabled hidden>Select a component</option>
+								@if($val > 1)
+									<option value="" selected disabled hidden>Select {{$key}} #{{$i + 1}}  </option>
+								@else
+									<option value="" selected disabled hidden>Select {{$key}}  </option>
+								@endif
 								@foreach ($availableComponents as $component)
-								<option value="{{ $component->id }}">{{ $component->name }}</option>
+									@if(strtolower($component->type) == strtolower($key))
+										<option value="{{ $component->id }}">{{ $component->name }}</option>
+									@endif
 								@endforeach
 							</select>
 							

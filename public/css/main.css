@@ -258,6 +258,7 @@ input:focus{
 }
 .card-components{
   width: 80%!important;
+  height: 80%!important;
 }
 
 .input-components{
