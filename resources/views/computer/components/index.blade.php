@@ -14,6 +14,7 @@
             <select name="component" id="component">
                 <option value="" selected disabled hidden>Select a component</option>
                 @foreach ($availableComponents as $component)
+                {{ logger($component) }}
                 <option value="{{ $component->id }}">{{ $component->name }}</option>
                 @endforeach
             </select>

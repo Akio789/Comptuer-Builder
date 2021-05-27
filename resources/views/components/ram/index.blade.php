@@ -34,7 +34,7 @@
             <td>{{ $item->brand }}</td>
             <td>{{ $item->speed }}</td>
             <td>{{ $item->capacity }} GB</td>
-            <td>${{ $item->price }}</td>
+            <td>$ {{ number_format($item->price,0,'.',',') }}</td>
             <td>
                 <div class="table-buttons">
                 <form action="{{ route('components.destroy', ['component' => $item->id]) }}" method="POST">

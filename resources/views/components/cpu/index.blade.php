@@ -34,7 +34,7 @@
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
             <td>{{ $item->capacity }} GHz</td>
-            <td>${{ $item->price }}</td>
+            <td>$ {{ number_format($item->price,0,'.',',') }}</td>
             <td>{{ $item->cores }}</td>
             <td>{{ $item->frequency_boost }}</td>
             <td>

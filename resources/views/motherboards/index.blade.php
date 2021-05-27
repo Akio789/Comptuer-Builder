@@ -34,7 +34,7 @@
             <td>{{ $item->size }}</td>
             <td>{{ $item->socket }}</td>
             <td>{{ $item->brand }}</td>
-            <td>${{ $item->price }}</td>
+            <td>$ {{ number_format($item->price,0,'.',',') }}</td>
             <td>{{ $item->max_memory }}</td>
             <td>
                 @foreach ($item->slots as $slot)
