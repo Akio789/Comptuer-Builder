@@ -25,7 +25,7 @@
 							<div class="input-group-prepend">
 								<span class="input-group-text"><i class="fas fa-microchip"></i></span>
 							</div>
-							<select name="component" id="component" class="form-control">
+							<select name="{{ $key . ',' . $i }}" id="component" class="form-control">
 								@if($val > 1)
 									<option value="" selected disabled hidden>Select {{$key}} #{{$i + 1}}  </option>
 								@else

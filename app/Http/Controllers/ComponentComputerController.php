@@ -122,15 +122,14 @@ class ComponentComputerController extends Controller
      */
     public function store(Request $request, $id)
     {
-        Validator::make($request->all(), [
-            'component' => 'required',
-        ])->validate();
-
-        $data = $request->input();
-        $data['computer_id'] = $id;
-        $data['component_id'] = (int)$data['component'];
-
-        ComponentComputer::create($data);
+        foreach ($request->input() as $key => $value) {
+            if ($key != '_token') {
+                $componentComputer = new ComponentComputer();
+                $componentComputer->computer_id = $id;
+                $componentComputer->component_id = (int)$value;
+                $componentComputer->save();
+            }
+        }
 
         return redirect()->route('computers.index');
     }
