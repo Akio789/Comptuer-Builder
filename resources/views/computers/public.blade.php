@@ -1,5 +1,5 @@
 @include('layouts.partials.head')
-@include('layouts.partials.headerpublic')
+@include('layouts.partials.headerPublic')
 <div class="title-banner"><h2 >List public of computers</h2></div>
 <table class="table table-striped table-dark">
     <thead>
