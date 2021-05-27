@@ -34,10 +34,10 @@
 						<input name="name" id="name" type="text" class="form-control" placeholder="name">
 					</div>
                     <div class="input-group form-group">
-						<select name="motherboard_id" id="motherboard_id" class="form-control">
+						<select name="motherboard_id" id="motherboard_id" class="form-control" dusk="motherboard">
 							<option value="invalid" selected>Select a motherboard</option>
 							@foreach ($motherboards as $motherboard)
-							<option value="{{ $motherboard->id }}">{{ $motherboard->name }}</option>
+							<option dusk="{{ $motherboard->id }}" value="{{ $motherboard->id }}">{{ $motherboard->name }}</option>
 							@endforeach
 						</select>
 					</div>
