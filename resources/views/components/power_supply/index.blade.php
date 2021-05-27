@@ -33,7 +33,7 @@
             <td>{{ $item->socket }}</td>
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
-            <td>${{ $item->price }}</td>
+            <td>$ {{ number_format($item->price,0,'.',',') }}</td>
             <td>{{ $item->power_supply_type }}</td>
             <td>{{ $item->capacity }}</td>
             <td>{{ $item->certification }}</td>

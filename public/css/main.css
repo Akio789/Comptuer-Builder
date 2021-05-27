@@ -227,17 +227,40 @@ input:focus{
   margin-left: auto;
   margin-right: 2vh;
  }
- .button-div{
-   display: flex;
+.button-div{
+  display: flex;
   margin-top: 1vh;
   margin-bottom: 1vh;
- }
+}
 
  /* Info card CSS*/
- .card-text h3, h2,h4{
-   color: white!important;
- }
- .btn-info{
-   float: left;
- }
+.card-text h3, h2,h4,h5{
+  color: white!important;
+}
+.btn-info{
+  float: left;
+}
 
+.btn-component{
+  height: 200px;
+  width: 200px;
+  font-size: 30px!important;
+  background-position: center!important;
+  font-weight: 500!important;
+}
+.component-list{
+  width: 300px;
+  float: left;
+  margin: 5px 5px 0px 0px;
+}
+.component-container{
+  width: 80%!important;
+}
+.card-components{
+  width: 80%!important;
+  height: 80%!important;
+}
+
+.input-components{
+  width: 300px!important;
+}

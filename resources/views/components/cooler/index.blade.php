@@ -35,7 +35,7 @@
             <td>{{ $item->name }}</td>
             <td>{{ $item->brand }}</td>
             <td>{{ $item->capacity }}</td>
-            <td>${{ $item->price }}</td>
+            <td>$ {{ number_format($item->price,0,'.',',') }}</td>
             <td>{{ $item->noise }}</td>
             <td>{{ $item->cooler_size }}</td>
             <td>{{ $item->radiator }}</td>

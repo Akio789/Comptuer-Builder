@@ -26,11 +26,12 @@
             <td>{{ $item->name }}</td>
             <td>
                 <div class="component">
-                    <p>Mohterboard: {{ $item->motherboard ? $item->motherboard->name : 'No motherboard' }}</p>
+                    <p>Motherboard: {{ $item->motherboard ? $item->motherboard->name : 'No motherboard' }}</p>
                 </div>
                 @foreach ($item->components as $component)
                 <div class="component">
-                    <p>{{ $component->name }}</p>
+                    <p>{{ucfirst(trans($component->type))}} : {{ $component->name }} </p>
+                    <p> &nbsp; $ {{ number_format($component->price,0,'.',',') }}</p>
                     <form action="{{ route('computer.components.destroy', ['computer' => $item->id, 'component' => $component->id]) }}" method="POST">
                         @csrf
                         @method('DELETE')
@@ -40,7 +41,7 @@
                 @endforeach
                <!-- <a href="{{ route('computer.components.index', ['computer' => $item->id]) }}">See all</a> -->
             </td>
-            <td>$ {{ $item->total_price }}</td>
+            <td>$ {{ number_format($item->total_price,0,'.',',') }}</td>
             <td>
                 <div class="table-buttons">
                     <form action="{{ route('computers.publish', ['computer' => $item->id]) }}" method="POST">

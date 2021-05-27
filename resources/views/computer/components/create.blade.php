@@ -2,9 +2,9 @@
 
 @section('content')
 
-<div class="container">
+<div class="container component-container">
 	<div class="d-flex justify-content-center">
-		<div class="card">
+		<div class="card card-components">
 			<div class="card-header">
 				<h3>Add new component</h3>
 				<div class="d-flex justify-content-end social_icon">
@@ -14,25 +14,38 @@
 			<h4>Motherboard: {{ $motherboard->name }}</h4>
 			
 			<h4>Socket: {{ $motherboard->socket }}</h4>
-			@foreach ($remainingSlots as $key => $val)
-			<h4>{{ $val }} {{ $key }} {{ $mappedComponentSocket[$key] }} left</h4>		
-			@endforeach
+			
             <form action="{{ route('computer.components.store', ['computer' => $computer->id]) }}" method="POST">
                 @csrf
-                    <div class="input-group form-group">
-						<div class="input-group-prepend">
-							<span class="input-group-text"><i class="fas fa-microchip"></i></span>
+				@foreach ($remainingSlots as $key => $val)
+				@if($val > 0)
+				<div class="component-list">
+					<h5>{{ $key }}</h5>
+					@for ($i = 0; $i < $val; $i++)	
+						<div class="input-group form-group input-components">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-microchip"></i></span>
+							</div>
+							<select name="{{ $key . ',' . $i }}" id="component" class="form-control">
+								@if($val > 1)
+									<option value="" selected disabled hidden>Select {{$key}} #{{$i + 1}}  </option>
+								@else
+									<option value="" selected disabled hidden>Select {{$key}}  </option>
+								@endif
+								@foreach ($availableComponents as $component)
+									@if(strtolower($component->type) == strtolower($key))
+										<option value="{{ $component->id }}">{{ $component->name }}</option>
+									@endif
+								@endforeach
+							</select>
+							
 						</div>
-						<select dusk="comp" name="component" id="component" class="form-control">
-                            <option value="" selected disabled hidden>Select a component</option>
-                            @foreach ($availableComponents as $component)
-                            <option dusk="{{ $component->id }}" value="{{ $component->id }}">{{ $component->name }}</option>
-                            @endforeach
-                        </select>
-                        
-					</div>
+					@endfor
+				</div>
+				@endif
+				@endforeach
                     <div class="form-group">
-						<input type="submit" value="Add" class="btn float-right login_btn">
+						<input type="submit" value="Save" class="btn float-right login_btn">
 					</div>
 				</form>
 			</div>
